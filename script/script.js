@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initLocation();
     initCategorySelection();   // ADD THIS
     initSearch();
+    restoreSearchState();
     initCarousel();
     initPayments();
     initPrintReceipt();
@@ -33,7 +34,7 @@ function initLogin() {
             e.stopPropagation();
 
             if (!isLoggedIn) {
-                loginIntent = "dashboard";
+                localStorage.setItem("loginIntent","dashboard");
                 if (loginModal) loginModal.classList.add("active");
             } else {
                 if (profileMenu) profileMenu.classList.toggle("active");
@@ -73,39 +74,86 @@ function initLogin() {
 
             } else {
 
-                if (otpInput.value.trim().length < 4) {
-                    loginError.innerText = "Enter valid OTP";
+                const mobile = mobileInput.value.trim();
+                const name = nameInput.value.trim();
+                const otp = otpInput.value.trim();
+
+                // Validate name if required
+                if (mobile !== "9999999999") {
+
+                    if (!name) {
+                        loginError.innerText = "Enter full name";
+                        loginError.style.display = "block";
+                        nameInput.focus();
+                        return;
+                    }
+
+                    const words = name.split(" ").filter(w => w.length > 0);
+
+                    if (words.length < 2) {
+                        loginError.innerText = "Please enter first and last name";
+                        loginError.style.display = "block";
+                        nameInput.focus();
+                        return;
+                    }
+                }
+
+                // Validate OTP
+                if (!otp) {
+                    loginError.innerText = "OTP is required";
                     loginError.style.display = "block";
+                    otpInput.focus();
                     return;
                 }
+
+                if (otp.length < 4) {
+                    loginError.innerText = "Enter valid OTP";
+                    loginError.style.display = "block";
+                    otpInput.focus();
+                    return;
+                }
+
+                loginError.style.display = "none";
 
                 isLoggedIn = true;
                 localStorage.setItem("isLoggedIn", "true");
                 if (loginModal) loginModal.classList.remove("active");
 
-                // ✅ FIXED REDIRECTS FOR ROOT STRUCTURE
                 const intent = localStorage.getItem("loginIntent");
+                localStorage.removeItem("loginIntent");
 
                 if(intent === "apply"){
-                    localStorage.removeItem("loginIntent");
-                    location.href = "applicationform.html";
+                    location.href = "html/applicationform.html";
                 }
-                else if(intent === "dashboard"){
+                else if(intent === "html/dashboard"){
                     location.href = "dashboard.html";
                 }
-                else if(intent === "search"){
+                else if(intent === "html/search"){
                     location.href = "searchresults.html";
+                }
+                else{
+                    location.reload();
                 }
             }
         });
     }
 
     if (logoutBtn) {
-        logoutBtn.addEventListener("click", function () {
-            localStorage.setItem("isLoggedIn", "false");
-            location.href = "../index.html";  // works from html pages
-        });
-    }
+    logoutBtn.addEventListener("click", function () {
+
+        localStorage.setItem("isLoggedIn", "false");
+        localStorage.removeItem("loginIntent");
+
+        // If already on root (index page)
+        if (window.location.pathname.endsWith("index.html")) {
+            window.location.reload();
+        } else {
+            // From /html/* pages
+            window.location.href = "../index.html";
+        }
+    });
+}
+
 }
 
 
@@ -146,16 +194,25 @@ function initSearch() {
 
     searchBtn.addEventListener("click", function () {
 
+        // Validate Location
+        if (selectedLocation.innerText.trim() === "Location") {
+            searchError.innerText = "Please select location";
+            searchError.style.display = "block";
+            return;
+        }
+
+        // Validate Category
         if (!selectedCategoryField.value) {
             searchError.innerText = "Please select category";
             searchError.style.display = "block";
             return;
         }
 
+
         searchError.style.display = "none";
 
         if (!isLoggedIn) {
-            loginIntent = "search";
+            localStorage.setItem("loginIntent","search");
             document.getElementById("loginModal").classList.add("active");
             return;
         }
@@ -168,7 +225,11 @@ function initSearch() {
             search: searchInput.value
         });
 
-        location.href = "html/searchresults.html?" + params.toString();
+        if (window.location.pathname.includes("/html/")) {
+            location.href = "searchresults.html?" + params.toString();
+        } else {
+            location.href = "html/searchresults.html?" + params.toString();
+        }
     });
 }
 
@@ -180,24 +241,43 @@ function initLocation() {
     const dropdown = document.getElementById("locationDropdown");
     const selected = document.getElementById("selectedLocation");
 
-    if (!toggle) return;
+    if (!toggle || !dropdown || !selected) return;
 
+    // 🔥 Restore location if previously selected
+    const savedLocation = localStorage.getItem("selectedLocation");
+    if(savedLocation){
+        selected.innerText = savedLocation;
+    }
+
+    // Toggle dropdown
     toggle.addEventListener("click", function (e) {
         e.stopPropagation();
         dropdown.classList.toggle("active");
     });
 
+    // Select city
     dropdown.querySelectorAll("div").forEach(item => {
-        item.addEventListener("click", function () {
-            selected.innerText = item.dataset.city;
+        item.addEventListener("click", function (e) {
+
+            e.stopPropagation();
+
+            const city = item.dataset.city;
+
+            selected.innerText = city;
+
+            // 🔥 Persist globally
+            localStorage.setItem("selectedLocation", city);
+
             dropdown.classList.remove("active");
         });
     });
 
+    // Close when clicking anywhere else
     document.addEventListener("click", function () {
         dropdown.classList.remove("active");
     });
 }
+
 
 /* ================= RESPONSIVE CAROUSEL ================= */
 
@@ -663,5 +743,49 @@ function initApplyNow(){
         // If logged in → go to application form
         location.href = "applicationform.html";
     });
+}
+
+/* ================= RESTORE SEARCH STATE ================= */
+
+/* ================= RESTORE SEARCH STATE ================= */
+
+function restoreSearchState(){
+
+    const params = new URLSearchParams(window.location.search);
+
+    const category = params.get("category");
+    const location = params.get("location");
+    const search = params.get("search");
+
+    const selectedCategoryField = document.getElementById("selectedCategoryField");
+    const categories = document.querySelectorAll(".category");
+    const selectedLocation = document.getElementById("selectedLocation");
+    const searchInput = document.getElementById("searchInput");
+
+    // Restore Category
+    if(category && selectedCategoryField){
+
+        selectedCategoryField.value = category;
+
+        categories.forEach(cat=>{
+            const catValue = cat.getAttribute("data-category");
+
+            if(catValue && catValue.trim() === category.trim()){
+                cat.classList.add("active-category");
+            } else {
+                cat.classList.remove("active-category");
+            }
+        });
+    }
+
+    // Restore Location
+    if(location && selectedLocation){
+        selectedLocation.innerText = location;
+    }
+
+    // Restore Search Text
+    if(search && searchInput){
+        searchInput.value = search;
+    }
 }
 

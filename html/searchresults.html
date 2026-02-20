@@ -51,32 +51,32 @@
 
 <section class="category-nav">
 
-  <div class="category">
+  <div class="category" data-category="Educational Institutes">
     <img src="../images/icon_educationalinstitutes.png">
     <span>Educational<br>Institutes</span>
   </div>
 
-  <div class="category">
+  <div class="category" data-category="Coaching Classes">
     <img src="../images/icon_coachingclasses.png">
     <span>Coaching<br>Classes</span>
   </div>
 
-  <div class="category">
+  <div class="category" data-category="Sports Academy">
     <img src="../images/icon_sportsacademy.png">
     <span>Sports<br>Academy</span>
   </div>
 
-  <div class="category">
+  <div class="category" data-category="Activity Classes">
     <img src="../images/icon_activityclasses.png">
     <span>Activity<br>Classes</span>
   </div>
 
-  <div class="category">
+  <div class="category" data-category="Health & Fitness">
     <img src="../images/icon_healthandfitness.png">
     <span>Health &<br>Fitness</span>
   </div>
 
-  <div class="category">
+  <div class="category" data-category="Private Learning">
     <img src="../images/icon_privatelearning.png">
     <span>Private<br>Learning</span>
   </div>
@@ -87,6 +87,7 @@
 
 <section class="search-section">
 
+    <input type="hidden" id="selectedCategoryField" value="">    
   <div class="search-row-top">
     <input type="text" id="searchInput" placeholder="Search programs...">
   </div>
@@ -101,9 +102,8 @@
     </select>
   </div>
 
-  <div class="error-message" id="searchError" style="display:none;">
-    Enter search term
-  </div>
+    <div class="error-message" id="searchError" style="display:none;">
+    </div>
 
   <button class="primary-btn" id="searchBtn">Search</button>
 
