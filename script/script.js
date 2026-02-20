@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
     initPayments();
     initPrintReceipt();
     initPaymentConfirmation();
-    initNotifications();
+    initNotifications();    
+    initApplyNow();
 });
 
 /* ================= LOGIN ================= */
@@ -83,12 +84,17 @@ function initLogin() {
                 if (loginModal) loginModal.classList.remove("active");
 
                 // ✅ FIXED REDIRECTS FOR ROOT STRUCTURE
-                if (loginIntent === "dashboard") {
-                    location.href = "html/dashboard.html";
-                }
+                const intent = localStorage.getItem("loginIntent");
 
-                if (loginIntent === "search") {
-                    location.href = "html/searchresults.html";
+                if(intent === "apply"){
+                    localStorage.removeItem("loginIntent");
+                    location.href = "applicationform.html";
+                }
+                else if(intent === "dashboard"){
+                    location.href = "dashboard.html";
+                }
+                else if(intent === "search"){
+                    location.href = "searchresults.html";
                 }
             }
         });
@@ -529,3 +535,133 @@ function initProfile(){
 
     disableEdit();
 }
+
+/* ================= APPLICATION FORM ================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+    initApplicationForm();
+});
+
+function initApplicationForm(){
+
+    const submitBtn = document.getElementById("submitApplicationBtn");
+    const form = document.getElementById("applicationForm");
+    const successBox = document.getElementById("applicationSuccess");
+
+    if(!submitBtn || !form) return;
+
+    submitBtn.addEventListener("click", function(){
+
+        if(validateApplication()){
+            successBox.style.display = "block";
+            successBox.innerText = 
+            "Your application has been submitted. See its status in My Applications.";
+
+            setTimeout(()=>{
+                location.href = "myapplications.html";
+            },2500);
+        }
+    });
+}
+
+function validateApplication(){
+
+    let valid = true;
+    let firstError = null;
+
+    function setError(field, message){
+
+        field.classList.add("required-error");
+
+        const errorDiv = document.getElementById(field.id + "Error");
+        if(errorDiv){
+            errorDiv.innerText = message;
+            errorDiv.style.display = "block";
+        }
+
+        if(!firstError){
+            firstError = field;
+        }
+
+        valid = false;
+    }
+
+    function clearError(field){
+
+        field.classList.remove("required-error");
+
+        const errorDiv = document.getElementById(field.id + "Error");
+        if(errorDiv){
+            errorDiv.innerText = "";
+            errorDiv.style.display = "none";
+        }
+    }
+
+    const fields = [
+        {id:"appFirstName", msg:"First name is required"},
+        {id:"appMiddleName", msg:"Middle name is required"},
+        {id:"appLastName", msg:"Last name is required"},
+        {id:"appMobile", msg:"Mobile number is required"},
+        {id:"appCity", msg:"City is required"},
+        {id:"appEmail", msg:"Email is required"}
+    ];
+
+    const phoneRegex = /^[6-9]\d{9}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    fields.forEach(item=>{
+        const field = document.getElementById(item.id);
+
+        if(!field.value.trim()){
+            setError(field, item.msg);
+        } else {
+            clearError(field);
+        }
+    });
+
+    const mobile = document.getElementById("appMobile");
+    const email = document.getElementById("appEmail");
+
+    if(mobile.value.trim() && !phoneRegex.test(mobile.value.trim())){
+        setError(mobile, "Enter valid 10-digit Indian mobile number");
+    }
+
+    if(email.value.trim() && !emailRegex.test(email.value.trim())){
+        setError(email, "Enter valid email address");
+    }
+
+    if(firstError){
+        firstError.focus();
+        firstError.scrollIntoView({behavior:"smooth", block:"center"});
+    }
+
+    return valid;
+}
+
+/* ================= APPLY NOW ================= */
+
+function initApplyNow(){
+
+    const applyBtn = document.getElementById("applyNowBtn");
+    if(!applyBtn) return;
+
+    applyBtn.addEventListener("click", function(){
+
+        // If user not logged in → open login modal
+        if(!isLoggedIn){
+
+            localStorage.setItem("loginIntent","apply");
+
+            const loginModal = document.getElementById("loginModal");
+            if(loginModal){
+                loginModal.classList.add("active");
+            }
+
+            return;
+        }
+
+        // If logged in → go to application form
+        location.href = "applicationform.html";
+    });
+}
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Form - Enrol-Me</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="header">
+
+    <div class="header-left">
+        <a href="../index.html">
+            <img src="../images/icon_home.png" class="nav-icon">
+        </a>
+
+        <div class="location-wrapper" id="locationToggle">
+            <span class="location">
+                <span id="selectedLocation">Location</span> ▼
+            </span>
+            <div class="location-dropdown" id="locationDropdown">
+                <div data-city="Mumbai">Mumbai</div>
+                <div data-city="Pune">Pune</div>
+                <div data-city="Delhi">Delhi</div>
+                <div data-city="Bangalore">Bangalore</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile">
+        <img src="../images/icon_person.png" id="profileIcon" class="nav-icon">
+        <div class="profile-menu" id="profileMenu">
+            <div onclick="location.href='profile.html'">Profile</div>
+            <div onclick="location.href='dashboard.html'">My Dashboard</div>
+            <div id="logoutBtn">Logout</div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= SUMMARY NAV ================= -->
+<div class="summary-nav">
+    <a href="programdetails.html">
+        <img src="../images/icon_back.png">
+    </a>
+    <div class="right-icons">
+        <img src="../images/icon_save.png" id="submitApplicationBtn">
+    </div>
+</div>
+
+<!-- ================= PROGRAM INFO ================= -->
+<div class="program-tile application-details">
+
+    <img src="../images/icon_institute.png" class="institute-icon">
+
+    <div class="program-info">
+        <p><strong>Applying for :</strong> akurdi</p>
+        <p><strong>Application Form Fee :</strong> ₹0</p>
+        <p><strong>Admission Fee :</strong> ₹0</p>
+        <p><strong>Program Fee :</strong> ₹0</p>
+    </div>
+</div>
+
+<!-- ================= FORM ================= -->
+<div class="profile-container">
+
+    <div class="profile-success" id="applicationSuccess"></div>
+
+    <form id="applicationForm" class="profile-form">
+
+        <div class="field-wrapper">
+            <label class="profile-label">First Name *</label>
+            <input type="text" id="appFirstName">
+            <div class="field-error-message" id="appFirstNameError"></div>
+        </div>
+
+        <div class="field-wrapper">
+            <label class="profile-label">Middle Name *</label>
+            <input type="text" id="appMiddleName">
+            <div class="field-error-message" id="appMiddleNameError"></div>
+        </div>
+
+        <div class="field-wrapper">
+            <label class="profile-label">Last Name *</label>
+            <input type="text" id="appLastName">
+            <div class="field-error-message" id="appLastNameError"></div>
+        </div>
+
+        <div class="field-wrapper">
+            <label class="profile-label">Mobile *</label>
+            <input type="text" id="appMobile">
+            <div class="field-error-message" id="appMobileError"></div>
+        </div>
+
+        <div class="field-wrapper">
+            <label class="profile-label">City *</label>
+            <input type="text" id="appCity">
+            <div class="field-error-message" id="appCityError"></div>
+        </div>
+
+        <div class="field-wrapper">
+            <label class="profile-label">Email *</label>
+            <input type="text" id="appEmail">
+            <div class="field-error-message" id="appEmailError"></div>
+        </div>
+
+    </form>
+</div>
+
+<div class="footer">
+    © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</div>
+
+<script src="../script/script.js"></script>
+</body>
+</html>
