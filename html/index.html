@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enrol-Me</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="header">
+
+    <div class="header-left">
+        <a href="index.html">
+            <img src="../images/icon_home.png" class="nav-icon">
+        </a>
+
+        <div class="location-wrapper" id="locationToggle">
+            <span class="location">
+                <span id="selectedLocation">Location</span> ▼
+            </span>
+            <div class="location-dropdown" id="locationDropdown">
+                <div data-city="Mumbai">Mumbai</div>
+                <div data-city="Pune">Pune</div>
+                <div data-city="Delhi">Delhi</div>
+                <div data-city="Bangalore">Bangalore</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile">
+        <img src="../images/icon_person.png" id="profileIcon" class="nav-icon">
+        <div class="profile-menu" id="profileMenu">
+            <div onclick="location.href='profile.html'">Profile</div>
+            <div onclick="location.href='dashboard.html'">My Dashboard</div>
+            <div id="logoutBtn">Logout</div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= CATEGORY NAV ================= -->
+<div class="category-nav">
+
+    <div class="category" data-category="Educational Institutes">
+        <img src="../images/icon_educationalinstitutes.png">
+        <span>Educational<br>Institutes</span>
+    </div>
+
+    <div class="category" data-category="Coaching Classes">
+        <img src="../images/icon_coachingclasses.png">
+        <span>Coaching<br>Classes</span>
+    </div>
+
+    <div class="category" data-category="Sports Academy">
+        <img src="../images/icon_sportsacademy.png">
+        <span>Sports<br>Academy</span>
+    </div>
+
+    <div class="category" data-category="Activity Classes">
+        <img src="../images/icon_activityclasses.png">
+        <span>Activity<br>Classes</span>
+    </div>
+
+    <div class="category" data-category="Health & Fitness">
+        <img src="../images/icon_healthandfitness.png">
+        <span>Health &<br>Fitness</span>
+    </div>
+
+    <div class="category" data-category="Private Learning">
+        <img src="../images/icon_privatelearning.png">
+        <span>Private<br>Learning</span>
+    </div>
+
+</div>
+
+<!-- ================= SEARCH ================= -->
+<div class="search-section">
+
+    <input type="hidden" id="selectedCategoryField" value="">
+
+    <div class="search-row-top">
+        <input type="text" id="searchInput" placeholder="Search programs...">
+    </div>
+
+    <div class="search-row-bottom">
+        <select id="subCategory">
+            <option value="">Sub Category</option>
+        </select>
+
+        <select id="areaSelect">
+            <option value="">Area</option>
+        </select>
+    </div>
+
+    <div class="error-message" id="searchError" style="display:none;">
+        Please select category
+    </div>
+
+    <button class="primary-btn" id="searchBtn">Search</button>
+</div>
+
+<!-- ================= CAROUSEL ================= -->
+<div class="carousel-wrapper">
+    <div class="carousel-track" id="carouselTrack">
+
+        <div class="carousel-item">
+            <a href="programdetails.html?program=Private%20Maths&institute=Bright%20Future">
+                <img src="../images/carousel1.png">
+            </a>
+        </div>
+
+        <div class="carousel-item">
+            <a href="programdetails.html?program=Football%20Academy&institute=Elite%20Sports">
+                <img src="../images/carousel2.png">
+            </a>
+        </div>
+
+        <div class="carousel-item">
+            <a href="programdetails.html?program=Yoga%20Wellness&institute=FitLife">
+                <img src="../images/carousel3.png">
+            </a>
+        </div>
+
+        <div class="carousel-item">
+            <a href="programdetails.html?program=Science%20Coaching&institute=EduPlus">
+                <img src="../images/carousel4.png">
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!-- ================= LOGIN MODAL ================= -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <h3>Login</h3>
+        <input type="text" id="mobileInput" placeholder="Mobile Number">
+        <input type="text" id="nameInput" placeholder="Your Name" style="display:none;">
+        <input type="text" id="otpInput" placeholder="OTP" style="display:none;">
+        <div class="error-message" id="loginError" style="display:none;"></div>
+        <button class="primary-btn" id="loginBtn">Get OTP</button>
+    </div>
+</div>
+
+<div class="footer">
+    © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</div>
+
+<script src="../script/script.js"></script>
+</body>
+</html>

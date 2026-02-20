@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Notifications - Enrol Me</title>
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+  <div class="header-left">
+
+    <a href="index.html">
+      <img src="../images/icon_home.png" class="nav-icon">
+    </a>
+
+    <div class="location-wrapper">
+      <div class="location" id="locationToggle">
+        <span id="selectedLocation">Location</span> ▾
+      </div>
+
+      <div class="location-dropdown" id="locationDropdown">
+        <div data-city="Pune">Pune</div>
+        <div data-city="Mumbai">Mumbai</div>
+        <div data-city="Delhi">Delhi</div>
+        <div data-city="Bangalore">Bangalore</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="profile">
+    <img src="../images/icon_person.png"
+         id="profileIcon"
+         class="nav-icon">
+
+    <div class="profile-menu" id="profileMenu">
+      <div onclick="location.href='profile.html'">Profile</div>
+      <div onclick="location.href='dashboard.html'">My Dashboard</div>
+      <div id="logoutBtn">Logout</div>
+    </div>
+  </div>
+
+</header>
+
+<!-- ================= SUMMARY NAV ================= -->
+
+<div class="summary-nav">
+
+  <a href="dashboard.html">
+    <img src="../images/icon_back.png" class="nav-icon">
+  </a>
+
+  <div class="right-icons">
+
+    <img src="../images/icon_actions.png"
+         id="actionsToggle"
+         class="nav-icon">
+
+    <!-- ACTION DROPDOWN -->
+    <div id="actionsMenu">
+      <div class="action-item" data-action="deleteAll">Delete All</div>
+      <div class="action-item" data-action="sortDate">Sort by Date</div>
+      <div class="action-item" data-action="sortSender">Sort by Sender</div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ================= NOTIFICATION LIST ================= -->
+
+<section style="width:85%; margin:40px auto;" id="notificationContainer">
+
+  <!-- Notification 1 -->
+  <div class="program-tile application-details notification-tile"
+       data-date="2026-02-15"
+       data-sender="Bright Future School">
+
+    <div>15 Feb 2026</div>
+
+    <p><strong>From:</strong> Bright Future School</p>
+    <p>Your second installment is due on 1 March 2026.</p>
+
+    <button class="primary-btn delete-btn">Delete</button>
+
+  </div>
+
+  <!-- Notification 2 -->
+  <div class="program-tile application-details notification-tile"
+       data-date="2026-01-25"
+       data-sender="Elite Coaching Academy">
+
+    <div>25 Jan 2026</div>
+
+    <p><strong>From:</strong> Elite Coaching Academy</p>
+    <p>Your class schedule has been updated.</p>
+
+    <button class="primary-btn delete-btn">Delete</button>
+
+  </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+  © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <h3>Login / Register</h3>
+    <input type="tel" id="mobileInput" placeholder="Mobile Number">
+    <input type="text" id="nameInput" placeholder="Your Name" style="display:none;">
+    <input type="text" id="otpInput" placeholder="Enter OTP" style="display:none;">
+    <div class="error-message" id="loginError" style="display:none;"></div>
+    <button class="primary-btn" id="loginBtn">Continue</button>
+  </div>
+</div>
+
+<script src="../script/script.js"></script>
+
+</body>
+</html>

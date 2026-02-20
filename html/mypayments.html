@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Payments - Enrol Me</title>
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ================= FULL HEADER ================= -->
+
+<header class="header">
+
+  <div class="header-left">
+
+    <a href="index.html">
+      <img src="../images/icon_home.png" class="nav-icon">
+    </a>
+
+    <div class="location-wrapper">
+      <div class="location" id="locationToggle">
+        <span id="selectedLocation">Location</span> ▾
+      </div>
+
+      <div class="location-dropdown" id="locationDropdown">
+        <div data-city="Pune">Pune</div>
+        <div data-city="Mumbai">Mumbai</div>
+        <div data-city="Delhi">Delhi</div>
+        <div data-city="Bangalore">Bangalore</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="profile">
+    <img src="../images/icon_person.png"
+         id="profileIcon"
+         class="nav-icon">
+
+    <div class="profile-menu" id="profileMenu">
+      <div onclick="location.href='profile.html'">Profile</div>
+      <div onclick="location.href='dashboard.html'">My Dashboard</div>
+      <div id="logoutBtn">Logout</div>
+    </div>
+  </div>
+
+</header>
+
+<!-- ================= SUMMARY NAV ================= -->
+
+<div class="summary-nav">
+
+  <a href="dashboard.html">
+    <img src="../images/icon_back.png" class="nav-icon" style="width:28px;height:28px;">
+  </a>
+
+  <div class="right-icons">
+    <!-- Default = newest first (descending) -->
+    <img src="../images/icon_sortdown.png"
+         id="sortPayments"
+         data-order="desc">
+  </div>
+
+</div>
+
+<!-- ================= PAYMENT LIST ================= -->
+
+<section class="search-results" id="paymentContainer">
+
+  <div class="payment-tile" data-date="2026-01-15">
+    <h3>Bright Future School</h3>
+    <p><strong>Program:</strong> CBSE Admission 2026</p>
+    <p><strong>Payment Date:</strong> 15 Jan 2026</p>
+    <p><strong>Program Fee:</strong> ₹40,000</p>
+    <p><strong>Transaction ID:</strong> TXN12345</p>
+    <p><strong>Status:</strong> Successful</p>
+    <p><strong>Remarks:</strong> Admission Fee</p>
+    <a href="paymentreceipt.html">Download Receipt</a>
+  </div>
+
+  <div class="payment-tile" data-date="2026-02-10">
+    <h3>Elite Coaching Academy</h3>
+    <p><strong>Program:</strong> IIT Foundation</p>
+    <p><strong>Payment Date:</strong> 10 Feb 2026</p>
+    <p><strong>Program Fee:</strong> ₹25,000</p>
+    <p><strong>Transaction ID:</strong> TXN78945</p>
+    <p><strong>Status:</strong> Successful</p>
+    <p><strong>Remarks:</strong> First Installment</p>
+    <a href="paymentreceipt.html">Download Receipt</a>
+  </div>
+
+</section>
+
+<footer class="footer">
+  © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <h3>Login / Register</h3>
+    <input type="tel" id="mobileInput" placeholder="Enter 10-digit Mobile Number">
+    <input type="text" id="nameInput" style="display:none;" placeholder="Enter Your Name">
+    <input type="text" id="otpInput" style="display:none;" placeholder="Enter OTP">
+    <div class="error-message" id="loginError" style="display:none;"></div>
+    <button class="primary-btn" id="loginBtn">Continue</button>
+  </div>
+</div>
+
+<script src="../script/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Details - Enrol Me</title>
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+  <div class="header-left">
+
+    <a href="index.html">
+      <img src="../images/icon_home.png" class="nav-icon">
+    </a>
+
+    <div class="location-wrapper">
+      <div class="location" id="locationToggle">
+        <span id="selectedLocation">Location</span> ▾
+      </div>
+
+      <div class="location-dropdown" id="locationDropdown">
+        <div data-city="Pune">Pune</div>
+        <div data-city="Mumbai">Mumbai</div>
+        <div data-city="Delhi">Delhi</div>
+        <div data-city="Bangalore">Bangalore</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="profile">
+    <img src="../images/icon_person.png"
+         id="profileIcon"
+         class="nav-icon">
+
+    <div class="profile-menu" id="profileMenu">
+      <div onclick="location.href='profile.html'">Profile</div>
+      <div onclick="location.href='dashboard.html'">My Dashboard</div>
+      <div id="logoutBtn">Logout</div>
+    </div>
+  </div>
+
+</header>
+
+<!-- ================= SUMMARY NAV ================= -->
+
+<div class="summary-nav">
+  <a href="myapplications.html">
+    <img src="../images/icon_back.png"
+         class="nav-icon"
+         style="width:28px; height:28px;">
+  </a>
+  <div>Application ID : 1023</div>
+</div>
+
+<!-- ================= PAGE TITLE ================= -->
+
+<section style="width:85%; margin:30px auto 10px;">
+  <h2>Application Details</h2>
+</section>
+
+<!-- ================= APPLICATION DETAILS TILE ================= -->
+
+<section class="program-tile application-details">
+
+  <p><strong>Name:</strong> Rahul Sharma</p>
+  <p><strong>Date of Birth:</strong> 15 March 2010</p>
+  <p><strong>Address:</strong> Baner, Pune</p>
+  <p><strong>Phone Number:</strong> 9876543210</p>
+  <p><strong>Email Address:</strong> rahul@email.com</p>
+  <p><strong>Program Applied For:</strong> CBSE Admission 2026</p>
+  <p><strong>Date of Application:</strong> 10 January 2026</p>
+  <p><strong>Application Status:</strong> Under Review</p>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+  © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <h3>Login / Register</h3>
+
+    <input type="tel" id="mobileInput" placeholder="Enter 10-digit Mobile Number">
+    <input type="text" id="nameInput" style="display:none;" placeholder="Enter Your Name">
+    <input type="text" id="otpInput" style="display:none;" placeholder="Enter OTP">
+
+    <div class="error-message" id="loginError" style="display:none;"></div>
+
+    <button class="primary-btn" id="loginBtn">Continue</button>
+  </div>
+</div>
+
+<script src="../script/script.js"></script>
+</body>
+</html>

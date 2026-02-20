@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Summary - Enrol Me</title>
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ================= FULL HEADER ================= -->
+
+<header class="header">
+
+  <div class="header-left">
+
+    <a href="index.html">
+      <img src="../images/icon_home.png" class="nav-icon">
+    </a>
+
+    <div class="location-wrapper">
+      <div class="location" id="locationToggle">
+        <span id="selectedLocation">Location</span> ▾
+      </div>
+
+      <div class="location-dropdown" id="locationDropdown">
+        <div data-city="Pune">Pune</div>
+        <div data-city="Mumbai">Mumbai</div>
+        <div data-city="Delhi">Delhi</div>
+        <div data-city="Bangalore">Bangalore</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="profile">
+    <img src="../images/icon_person.png"
+         id="profileIcon"
+         class="nav-icon">
+
+    <div class="profile-menu" id="profileMenu">
+      <div onclick="location.href='profile.html'">Profile</div>
+      <div onclick="location.href='dashboard.html'">My Dashboard</div>
+      <div id="logoutBtn">Logout</div>
+    </div>
+  </div>
+
+</header>
+
+<!-- ================= SUMMARY NAV ================= -->
+
+<div class="summary-nav">
+
+  <a href="payfees.html">
+    <img src="../images/icon_back.png" class="nav-icon" style="width:28px;height:28px;">
+  </a>
+
+  <div>Payment Summary</div>
+
+</div>
+
+<!-- ================= SUMMARY TILE ================= -->
+
+<section class="program-tile application-details">
+
+  <p><strong>Organization:</strong> Bright Future School</p>
+  <p><strong>Program:</strong> CBSE Admission 2026</p>
+  <p><strong>Installment:</strong> Second Installment</p>
+  <p><strong>Amount:</strong> ₹20,000</p>
+  <p><strong>Convenience Fee:</strong> ₹0</p>
+  <hr style="margin:15px 0;">
+  <p><strong>Total Payable:</strong> ₹20,000</p>
+
+  <button class="primary-btn"
+          style="margin-top:20px;">
+      Confirm Payment
+  </button>
+
+</section>
+
+<footer class="footer">
+  © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <h3>Login / Register</h3>
+    <input type="tel" id="mobileInput">
+    <input type="text" id="nameInput" style="display:none;">
+    <input type="text" id="otpInput" style="display:none;">
+    <div class="error-message" id="loginError" style="display:none;"></div>
+    <button class="primary-btn" id="loginBtn">Continue</button>
+  </div>
+</div>
+
+<script src="../script/script.js"></script>
+</body>
+</html>

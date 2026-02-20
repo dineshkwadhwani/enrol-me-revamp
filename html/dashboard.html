@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Enrol Me</title>
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+  <div class="header-left">
+
+    <a href="index.html">
+      <img src="../images/icon_home.png" class="nav-icon">
+    </a>
+
+    <div class="location-wrapper">
+      <div class="location" id="locationToggle">
+        <span id="selectedLocation">Location</span> ▾
+      </div>
+
+      <div class="location-dropdown" id="locationDropdown">
+        <div data-city="Pune">Pune</div>
+        <div data-city="Mumbai">Mumbai</div>
+        <div data-city="Delhi">Delhi</div>
+        <div data-city="Bangalore">Bangalore</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="profile">
+    <img src="../images/icon_person.png"
+         id="profileIcon"
+         class="nav-icon">
+
+    <div class="profile-menu" id="profileMenu">
+      <div onclick="location.href='profile.html'">Profile</div>
+      <div onclick="location.href='dashboard.html'">My Dashboard</div>
+      <div id="logoutBtn">Logout</div>
+    </div>
+  </div>
+
+</header>
+
+<!-- ================= DASHBOARD ICONS ================= -->
+
+<section class="category-nav">
+
+  <div class="category" onclick="location.href='index.html'">
+    <img src="../images/icon_search.png">
+    <span>Search</span>
+  </div>
+
+  <div class="category" onclick="location.href='myapplications.html'">
+    <img src="../images/icon_myapplications.png">
+    <span>My<br>Applications</span>
+  </div>
+
+  <div class="category" onclick="location.href='myprograms.html'">
+    <img src="../images/icon_myprograms.png">
+    <span>My<br>Programs</span>
+  </div>
+
+  <div class="category" onclick="location.href='payfees.html'">
+    <img src="../images/icon_payfees.png">
+    <span>Pay<br>Fees</span>
+  </div>
+
+  <div class="category" onclick="location.href='mypayments.html'">
+    <img src="../images/icon_mypayments.png">
+    <span>My<br>Payments</span>
+  </div>
+
+  <div class="category" onclick="location.href='mynotifications.html'">
+    <img src="../images/icon_notifications.png">
+    <span>Notifications</span>
+  </div>
+
+</section>
+
+<footer class="footer">
+  © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <h3>Login / Register</h3>
+    <input type="tel" id="mobileInput" placeholder="Enter 10-digit Mobile Number">
+    <input type="text" id="nameInput" style="display:none;" placeholder="Enter Your Name">
+    <input type="text" id="otpInput" style="display:none;" placeholder="Enter OTP">
+    <div class="error-message" id="loginError" style="display:none;"></div>
+    <button class="primary-btn" id="loginBtn">Continue</button>
+  </div>
+</div>
+
+<script src="../script/script.js"></script>
+</body>
+</html>
