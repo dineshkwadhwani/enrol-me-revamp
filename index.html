@@ -145,15 +145,32 @@
 
 <!-- ================= LOGIN MODAL ================= -->
 <div class="modal" id="loginModal">
+
     <div class="modal-content">
-        <h3>Login</h3>
-        <input type="text" id="mobileInput" placeholder="Mobile Number">
+
+        <span class="modal-close" id="loginCloseBtn">&times;</span>
+
+        <h3>Login / Register</h3>
+
+        <input type="text" id="mobileInput" placeholder="Enter 10-digit Mobile Number">
         <input type="text" id="nameInput" placeholder="Your Name" style="display:none;">
         <input type="text" id="otpInput" placeholder="OTP" style="display:none;">
+
         <div class="error-message" id="loginError" style="display:none;"></div>
-        <button class="primary-btn" id="loginBtn">Get OTP</button>
+
+        <button class="primary-btn" id="loginBtn">Continue</button>
+
+        <div class="org-login-bar" id="orgLoginBar">
+            <div class="org-line1">Organization Login / Signup</div>
+            <div class="org-line2">Click Here</div>
+        </div>
+
     </div>
+
 </div>
+
+
+
 
 <div class="footer">
     © Enrol-Me 2026 | Customer Care: +91 96041 88725

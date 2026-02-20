@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function initLogin() {
 
+    const orgLoginBar = document.getElementById("orgLoginBar");
     const profileIcon = document.getElementById("profileIcon");
     const profileMenu = document.getElementById("profileMenu");
     const loginModal = document.getElementById("loginModal");
@@ -28,6 +29,8 @@ function initLogin() {
     const otpInput = document.getElementById("otpInput");
     const loginError = document.getElementById("loginError");
     const logoutBtn = document.getElementById("logoutBtn");
+    const closeBtn = document.getElementById("loginCloseBtn");
+
 
     if (profileIcon) {
         profileIcon.addEventListener("click", function (e) {
@@ -138,21 +141,55 @@ function initLogin() {
         });
     }
 
+    if (orgLoginBar) {
+       orgLoginBar.addEventListener("click", function () {
+            window.location.href = "orglogin.html";
+       });
+    }
+
+    // Close modal when clicking X
+    if (closeBtn) {
+        closeBtn.addEventListener("click", function () {
+            if (loginModal) loginModal.classList.remove("active");
+            loginError.style.display = "none";
+        });
+    }
+
+    if (loginModal) {
+        loginModal.addEventListener("click", function(e){
+            if (e.target === loginModal) {
+                loginModal.classList.remove("active");
+            }
+        });
+    }
+
+    
     if (logoutBtn) {
     logoutBtn.addEventListener("click", function () {
 
         localStorage.setItem("isLoggedIn", "false");
         localStorage.removeItem("loginIntent");
 
-        // If already on root (index page)
-        if (window.location.pathname.endsWith("index.html")) {
-            window.location.reload();
-        } else {
-            // From /html/* pages
-            window.location.href = "../index.html";
-        }
-    });
-}
+            // If already on root (index page)
+            if (window.location.pathname.endsWith("index.html")) {
+                window.location.reload();
+            } else {
+                // From /html/* pages
+                window.location.href = "../index.html";
+            }        
+        });
+    }
+
+    if (orgLoginBar) {
+        orgLoginBar.addEventListener("click", function () {
+
+            if (window.location.pathname.includes("/html/")) {
+                window.location.href = "orglogin.html";
+            } else {
+                 window.location.href = "html/orglogin.html";
+            }            
+        });
+    }
 
 }
 

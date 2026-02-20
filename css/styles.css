@@ -680,3 +680,59 @@ hr{
   flex-direction:column;
 }
 
+/* ================= ORGANIZATION LOGIN BAR ================= */
+
+.org-login-bar{
+  margin-top:20px;
+  padding:14px;
+  background:var(--soft);      /* Lighter brand background */
+  color:var(--dark);           /* Brand text color */
+  border-radius:8px;
+  text-align:center;
+  cursor:pointer;
+}
+
+.org-login-bar .org-line1{
+  font-size:14px;
+  font-weight:600;
+}
+
+.org-login-bar .org-line2{
+  font-size:13px;
+  margin-top:4px;
+  text-decoration:underline;
+}
+
+/* Keep same color on hover */
+.org-login-bar:hover{
+  background:var(--soft);
+  color:var(--dark);
+}
+
+/* ================= MODAL CLOSE BUTTON ================= */
+
+.modal-content{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  width:320px;
+  text-align:center;
+  position:relative;   /* 🔥 REQUIRED */
+}
+
+
+.modal-close{
+  position:absolute;
+  top:12px;
+  right:15px;
+  font-size:22px;
+  font-weight:600;
+  cursor:pointer;
+  color:#999;
+  line-height:1;
+}
+
+.modal-close:hover{
+  color:var(--dark);
+}
+
