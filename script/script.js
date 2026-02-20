@@ -33,15 +33,15 @@ function initLogin() {
 
             if (!isLoggedIn) {
                 loginIntent = "dashboard";
-                loginModal.classList.add("active");
+                if (loginModal) loginModal.classList.add("active");
             } else {
-                profileMenu.classList.toggle("active");
+                if (profileMenu) profileMenu.classList.toggle("active");
             }
         });
     }
 
     document.addEventListener("click", function () {
-        if(profileMenu) profileMenu.classList.remove("active");
+        if (profileMenu) profileMenu.classList.remove("active");
     });
 
     if (loginBtn) {
@@ -80,13 +80,15 @@ function initLogin() {
 
                 isLoggedIn = true;
                 localStorage.setItem("isLoggedIn", "true");
-                loginModal.classList.remove("active");
+                if (loginModal) loginModal.classList.remove("active");
 
+                // ✅ FIXED REDIRECTS FOR ROOT STRUCTURE
                 if (loginIntent === "dashboard") {
-                    location.href = "dashboard.html";
+                    location.href = "html/dashboard.html";
                 }
+
                 if (loginIntent === "search") {
-                    location.href = "searchresults.html";
+                    location.href = "html/searchresults.html";
                 }
             }
         });
@@ -95,10 +97,11 @@ function initLogin() {
     if (logoutBtn) {
         logoutBtn.addEventListener("click", function () {
             localStorage.setItem("isLoggedIn", "false");
-            location.href = "index.html";
+            location.href = "../index.html";  // works from html pages
         });
     }
 }
+
 
 /* ================= CATEGORY SELECT ================= */
 
@@ -159,7 +162,7 @@ function initSearch() {
             search: searchInput.value
         });
 
-        location.href = "searchresults.html?" + params.toString();
+        location.href = "html/searchresults.html?" + params.toString();
     });
 }
 
@@ -200,6 +203,7 @@ function initCarousel(){
     const items = track.children;
     const total = items.length;
     let index = 0;
+    let interval;
 
     function getVisibleCount(){
         if(window.innerWidth >= 1200) return 3;
@@ -207,30 +211,37 @@ function initCarousel(){
         return 1;
     }
 
-    function slide(){
+    function updateCarousel(){
 
         const visible = getVisibleCount();
+        const itemWidth = track.children[0].offsetWidth;
         const maxIndex = total - visible;
-
-        index++;
 
         if(index > maxIndex){
             index = 0;
         }
 
-        track.style.transform = `translateX(-${index * (100 / visible)}%)`;
+        track.style.transform = `translateX(-${index * itemWidth}px)`;
     }
 
-    setInterval(slide, 3000);
+    function slide(){
+        index++;
+        updateCarousel();
+    }
+
+    function startAuto(){
+        clearInterval(interval);
+        interval = setInterval(slide, 3000);
+    }
 
     window.addEventListener("resize", function(){
         index = 0;
-        track.style.transform = "translateX(0)";
+        updateCarousel();
     });
 
-
-
+    startAuto();
 }
+
 
 /* ================= PAYMENTS SORT ================= */
 
