@@ -591,3 +591,85 @@ hr{
   }
 }
 
+/* ================= PROFILE PAGE ================= */
+
+.profile-container{
+  width:85%;
+  margin:40px auto;
+}
+
+.profile-form{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.profile-form input,
+.profile-form select,
+.profile-form textarea{
+  width:100%;
+  padding:14px;
+  border:2px solid #ccc;
+  border-radius:8px;
+  font-size:15px;
+  background:#f7f7f7;
+  transition:all .2s ease;
+}
+
+.profile-form input[readonly],
+.profile-form select[disabled],
+.profile-form textarea[readonly]{
+  background:#e5e5e5;
+  border-color:#ddd;
+  cursor:not-allowed;
+}
+
+.profile-form input.editable,
+.profile-form select.editable,
+.profile-form textarea.editable{
+  background:white;
+  border-color:var(--light);
+}
+
+.profile-form input.required-error,
+.profile-form select.required-error,
+.profile-form textarea.required-error{
+  border:2px solid #d10000;
+}
+
+.profile-success{
+  background:#e6f7ec;
+  color:#1e7e34;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:20px;
+  display:none;
+}
+
+.profile-error{
+  color:#d10000;
+  font-size:13px;
+  margin-top:-10px;
+  display:none;
+}
+
+.profile-label{
+  font-weight:600;
+  margin-bottom:5px;
+  display:block;
+}
+
+/* ================= PROFILE FIELD ERRORS ================= */
+
+.field-error-message{
+  color:#d10000;
+  font-size:13px;
+  margin-top:6px;
+  display:none;
+}
+
+.field-wrapper{
+  display:flex;
+  flex-direction:column;
+}
+

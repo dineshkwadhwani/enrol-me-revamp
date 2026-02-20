@@ -365,3 +365,167 @@ function initNotifications(){
         });
     });
 }
+
+
+/* ================= PROFILE PAGE ================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+    initProfile();
+});
+
+function initProfile(){
+
+    const editBtn = document.getElementById("editProfileBtn");
+    const form = document.getElementById("profileForm");
+    const successBox = document.getElementById("profileSuccess");
+
+    if(!editBtn || !form) return;
+
+    let editMode = false;
+
+    editBtn.addEventListener("click", function(){
+
+        if(!editMode){
+            enableEdit();
+        } else {
+            saveProfile();
+        }
+    });
+
+    function enableEdit(){
+
+        editMode = true;
+
+        const fields = form.querySelectorAll("input, select, textarea");
+
+        fields.forEach(field=>{
+            field.removeAttribute("readonly");
+            field.removeAttribute("disabled");
+            field.classList.add("editable");
+        });
+
+        editBtn.src = "../images/icon_save.png";
+    }
+
+    function disableEdit(){
+
+        editMode = false;
+
+        const fields = form.querySelectorAll("input, select, textarea");
+
+        fields.forEach(field=>{
+            field.setAttribute("readonly", true);
+            field.setAttribute("disabled", true);
+            field.classList.remove("editable");
+            field.classList.remove("required-error");
+        });
+
+        editBtn.src = "../images/icon_edit.png";
+    }
+
+    function validateProfile(){
+
+    let valid = true;
+    let firstErrorField = null;
+
+    function setError(field, message){
+
+        field.classList.add("required-error");
+
+        const errorDiv = document.getElementById(field.id + "Error");
+        if(errorDiv){
+            errorDiv.innerText = message;
+            errorDiv.style.display = "block";
+        }
+
+        if(!firstErrorField){
+            firstErrorField = field;
+        }
+
+        valid = false;
+    }
+
+    function clearError(field){
+
+        field.classList.remove("required-error");
+
+        const errorDiv = document.getElementById(field.id + "Error");
+        if(errorDiv){
+            errorDiv.innerText = "";
+            errorDiv.style.display = "none";
+        }
+    }
+
+    const name = document.getElementById("firstName");
+    const lastName = document.getElementById("lastName");
+    const phone = document.getElementById("phone");
+    const email = document.getElementById("email");
+    const address1 = document.getElementById("address1");
+    const city = document.getElementById("city");
+    const pin = document.getElementById("pin");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[6-9]\d{9}$/;
+    const pinRegex = /^\d{6}$/;
+
+    const requiredFields = [
+        {field:name, message:"First name is required"},
+        {field:lastName, message:"Last name is required"},
+        {field:address1, message:"Address Line 1 is required"},
+        {field:city, message:"City is required"},
+        {field:pin, message:"Pin code is required"},
+        {field:phone, message:"Phone number is required"},
+        {field:email, message:"Email is required"}
+    ];
+
+    requiredFields.forEach(item=>{
+        if(!item.field.value.trim()){
+            setError(item.field, item.message);
+        } else {
+            clearError(item.field);
+        }
+    });
+
+    if(phone.value.trim() && !phoneRegex.test(phone.value.trim())){
+        setError(phone, "Enter valid 10-digit Indian mobile number");
+    }
+
+    if(email.value.trim() && !emailRegex.test(email.value.trim())){
+        setError(email, "Enter valid email address");
+    }
+
+    if(pin.value.trim() && !pinRegex.test(pin.value.trim())){
+        setError(pin, "Pin must be 6 digits");
+    }
+
+    // ✅ Focus first invalid field
+    if(firstErrorField){
+        firstErrorField.focus();
+        firstErrorField.scrollIntoView({behavior:"smooth", block:"center"});
+    }
+
+    return valid;
+}
+
+
+
+    function saveProfile(){
+
+        if(!validateProfile()){
+            return;
+        }
+
+        disableEdit();
+
+        if(successBox){
+            successBox.style.display = "block";
+            successBox.innerText = "Profile updated successfully";
+
+            setTimeout(()=>{
+                successBox.style.display = "none";
+            },3000);
+        }
+    }
+
+    disableEdit();
+}

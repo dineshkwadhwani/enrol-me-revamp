@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Enrol-Me</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="header">
+
+    <div class="header-left">
+        <a href="../index.html">
+            <img src="../images/icon_home.png" class="nav-icon">
+        </a>
+
+        <div class="location-wrapper" id="locationToggle">
+            <span class="location">
+                <span id="selectedLocation">Location</span> ▼
+            </span>
+            <div class="location-dropdown" id="locationDropdown">
+                <div data-city="Mumbai">Mumbai</div>
+                <div data-city="Pune">Pune</div>
+                <div data-city="Delhi">Delhi</div>
+                <div data-city="Bangalore">Bangalore</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile">
+        <img src="../images/icon_person.png" id="profileIcon" class="nav-icon">
+        <div class="profile-menu" id="profileMenu">
+            <div onclick="location.href='profile.html'">Profile</div>
+            <div onclick="location.href='dashboard.html'">My Dashboard</div>
+            <div id="logoutBtn">Logout</div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= SUMMARY NAV ================= -->
+<div class="summary-nav">
+    <a href="dashboard.html">
+        <img src="../images/icon_back.png">
+    </a>
+    <div class="right-icons">
+        <img src="../images/icon_edit.png" id="editProfileBtn">
+    </div>
+</div>
+
+<!-- ================= PROFILE CONTENT ================= -->
+<div class="profile-container">
+
+    <div class="profile-success" id="profileSuccess"></div>
+
+    <form id="profileForm" class="profile-form">
+
+        <!-- Title -->
+        <div class="field-wrapper">
+            <label class="profile-label">Title</label>
+            <select id="title">
+                <option>Mr</option>
+                <option>Mrs</option>
+                <option>Ms</option>
+            </select>
+        </div>
+
+        <!-- Gender -->
+        <div class="field-wrapper">
+            <label class="profile-label">Gender</label>
+            <select id="gender">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <!-- First Name -->
+        <div class="field-wrapper">
+            <label class="profile-label">First Name *</label>
+            <input type="text" id="firstName" value="Dinesh">
+            <div class="field-error-message" id="firstNameError"></div>
+        </div>
+
+        <!-- Middle Name -->
+        <div class="field-wrapper">
+            <label class="profile-label">Middle Name</label>
+            <input type="text" id="middleName" placeholder="Enter Middle Name">
+        </div>
+
+        <!-- Last Name -->
+        <div class="field-wrapper">
+            <label class="profile-label">Last Name *</label>
+            <input type="text" id="lastName" value="Wadhwani">
+            <div class="field-error-message" id="lastNameError"></div>
+        </div>
+
+        <!-- DOB -->
+        <div class="field-wrapper">
+            <label class="profile-label">Date Of Birth</label>
+            <input type="date" id="dob">
+        </div>
+
+        <!-- Email -->
+        <div class="field-wrapper">
+            <label class="profile-label">Email *</label>
+            <input type="email" id="email" value="dinesh_wadhwani@yahoo.com">
+            <div class="field-error-message" id="emailError"></div>
+        </div>
+
+        <!-- Phone -->
+        <div class="field-wrapper">
+            <label class="profile-label">Phone *</label>
+            <input type="text" id="phone" value="9767676738">
+            <div class="field-error-message" id="phoneError"></div>
+        </div>
+
+        <!-- Address Line 1 -->
+        <div class="field-wrapper">
+            <label class="profile-label">Address Line 1 *</label>
+            <input type="text" id="address1" value="NA">
+            <div class="field-error-message" id="address1Error"></div>
+        </div>
+
+        <!-- Address Line 2 -->
+        <div class="field-wrapper">
+            <label class="profile-label">Address Line 2</label>
+            <input type="text" id="address2" placeholder="Line 2">
+        </div>
+
+        <!-- Street -->
+        <div class="field-wrapper">
+            <label class="profile-label">Street</label>
+            <input type="text" id="street">
+        </div>
+
+        <!-- City -->
+        <div class="field-wrapper">
+            <label class="profile-label">City *</label>
+            <input type="text" id="city" value="Pune">
+            <div class="field-error-message" id="cityError"></div>
+        </div>
+
+        <!-- Pin -->
+        <div class="field-wrapper">
+            <label class="profile-label">Pin Code *</label>
+            <input type="text" id="pin">
+            <div class="field-error-message" id="pinError"></div>
+        </div>
+
+        <!-- State -->
+        <div class="field-wrapper">
+            <label class="profile-label">State</label>
+            <select id="state">
+                <option>Maharashtra</option>
+                <option>Delhi</option>
+                <option>Karnataka</option>
+            </select>
+        </div>
+
+        <!-- Country -->
+        <div class="field-wrapper">
+            <label class="profile-label">Country</label>
+            <select id="country">
+                <option>India</option>
+            </select>
+        </div>
+
+    </form>
+</div>
+
+<div class="footer">
+    © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</div>
+
+<script src="../script/script.js"></script>
+</body>
+</html>
