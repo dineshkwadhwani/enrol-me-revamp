@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organization Dashboard - Enrol Me</title>
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<script>
+if(localStorage.getItem("orgLoggedIn") !== "true"){
+    location.href = "orglogin.html";
+}
+</script>
+
+<header class="header">
+
+  <div class="header-left">
+    <a href="../index.html">
+      <img src="../images/icon_home.png" class="nav-icon">
+    </a>
+  </div>
+
+  <div class="profile">
+    <img src="../images/icon_person.png"
+         id="profileIcon"
+         class="nav-icon">
+
+    <div class="profile-menu" id="profileMenu">
+      <div onclick="location.href='profile.html'">Profile</div>
+      <div onclick="location.href='orgdashboard.html'">Dashboard</div>
+      <div id="orgLogoutBtn">Logout</div>
+    </div>
+  </div>
+
+</header>
+
+<section class="category-nav">
+
+  <a href="orgbankaccount.html" class="category-link">
+    <div class="category">
+      <img src="../images/icon_bankaccount.png">
+      <span>Bank<br>Account</span>
+    </div>
+  </a>
+
+  <a href="applicationform.html" class="category-link">
+    <div class="category">
+      <img src="../images/icon_applicationform.png">
+      <span>Application<br>Form</span>
+    </div>
+  </a>
+
+  <a href="myusers.html" class="category-link">
+    <div class="category">
+      <img src="../images/icon_myusers.png">
+      <span>My<br>Users</span>
+    </div>
+  </a>
+
+  <a href="myprograms.html" class="category-link">
+    <div class="category">
+      <img src="../images/icon_myprograms.png">
+      <span>My<br>Programs</span>
+    </div>
+  </a>
+
+  <a href="creategallery.html" class="category-link">
+    <div class="category">
+      <img src="../images/icon_creategallery.png">
+      <span>Create<br>Gallery</span>
+    </div>
+  </a>
+
+  <a href="newapplicants.html" class="category-link">
+    <div class="category">
+      <img src="../images/icon_newapplicants.png">
+      <span>New<br>Applicants</span>
+    </div>
+  </a>
+
+  <a href="selectedapplicants.html" class="category-link">
+    <div class="category">
+      <img src="../images/icon_selectedapplicants.png">
+      <span>Selected<br>Applicants</span>
+    </div>
+  </a>
+
+  <a href="applyoffline.html" class="category-link">
+    <div class="category">
+      <img src="../images/icon_applyoffline.png">
+      <span>Apply<br>Offline</span>
+    </div>
+  </a>
+
+  <a href="recordpayment.html" class="category-link">
+    <div class="category">
+      <img src="../images/icon_recordpayment.png">
+      <span>Record<br>Payment</span>
+    </div>
+  </a>
+
+  <a href="broadcastmessages.html" class="category-link">
+    <div class="category">
+      <img src="../images/icon_broadcastmessage.png">
+      <span>Broadcast<br>Messages</span>
+    </div>
+  </a>
+
+  <a href="pendinginvoices.html" class="category-link">
+    <div class="category">
+      <img src="../images/icon_pendinginvoices.png">
+      <span>Pending<br>Invoices</span>
+    </div>
+  </a>
+
+  <a href="reports.html" class="category-link">
+    <div class="category">
+      <img src="../images/icon_reports.png">
+      <span>Reports</span>
+    </div>
+  </a>
+
+</section>
+
+<footer class="footer">
+  © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<script src="../script/script.js"></script>
+<script src="../script/orgscript.js"></script>
+
+</body>
+</html>

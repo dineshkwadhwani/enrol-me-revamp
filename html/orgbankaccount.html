@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organization Bank Account - Enrol Me</title>
+<link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+<body>
+
+<script>
+if(localStorage.getItem("orgLoggedIn") !== "true"){
+    location.href = "orglogin.html";
+}
+</script>
+
+<!-- ================= HEADER (MATCH DASHBOARD) ================= -->
+
+<header class="header">
+
+  <div class="header-left">
+
+    <a href="../index.html">
+      <img src="../images/icon_home.png" class="nav-icon">
+    </a>
+
+  </div>
+
+  <div class="profile">
+    <img src="../images/icon_person.png"
+         id="profileIcon"
+         class="nav-icon">
+
+    <div class="profile-menu" id="profileMenu">
+      <div onclick="location.href='profile.html'">Profile</div>
+      <div onclick="location.href='orgdashboard.html'">Dashboard</div>
+      <div id="orgLogoutBtn">Logout</div>
+    </div>
+  </div>
+
+</header>
+
+<!-- ================= SUMMARY NAV ================= -->
+
+<div class="summary-nav">
+
+  <!-- BACK ICON LEFT -->
+  <a href="orgdashboard.html">
+    <img src="../images/icon_back.png" class="nav-icon">
+  </a>
+
+  <!-- EDIT / SAVE RIGHT -->
+  <div>
+    <img src="../images/icon_edit.png"
+         id="bankEditBtn"
+         class="nav-icon">
+  </div>
+
+</div>
+
+<!-- ================= FORM SECTION ================= -->
+
+<section class="form-container">
+
+<h2>Bank Account Details</h2>
+
+<div class="success-message" id="bankSuccess"></div>
+
+<div class="field-wrapper">
+  <input type="text" id="bankName" disabled>
+  <div class="field-error" id="bankNameError"></div>
+</div>
+
+<div class="field-wrapper">
+  <input type="text" id="accountNumber" disabled>
+  <div class="field-error" id="accountNumberError"></div>
+</div>
+
+<div class="field-wrapper">
+  <input type="text" id="ifscCode" disabled>
+  <div class="field-error" id="ifscCodeError"></div>
+</div>
+
+<div class="field-wrapper">
+  <input type="text" id="accountHolder" disabled>
+  <div class="field-error" id="accountHolderError"></div>
+</div>
+
+<div class="field-wrapper">
+  <input type="email" id="bankEmail" disabled>
+  <div class="field-error" id="bankEmailError"></div>
+</div>
+
+<div class="field-wrapper">
+  <select id="accountType" disabled>
+    <option value="">Select Account Type</option>
+    <option>Savings S/B</option>
+    <option>Current</option>
+  </select>
+  <div class="field-error" id="accountTypeError"></div>
+</div>
+
+<div class="field-wrapper">
+  <select id="transferMode" disabled>
+    <option value="">Select Transfer Mode</option>
+    <option>NEFT</option>
+    <option>RTGS</option>
+    <option>IMPS</option>
+  </select>
+  <div class="field-error" id="transferModeError"></div>
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+  © Enrol-Me 2026 | Organization Panel
+</footer>
+
+<script src="../script/orgscript.js"></script>
+
+</body>
+</html>

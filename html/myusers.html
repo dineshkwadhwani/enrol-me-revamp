@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Users - Enrol Me</title>
+<link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <a href="../index.html">
+      <img src="../images/icon_home.png" class="nav-icon">
+    </a>
+  </div>
+
+  <div class="profile">
+    <img src="../images/icon_person.png" id="profileIcon" class="nav-icon">
+    <div class="profile-menu" id="profileMenu">
+      <div onclick="location.href='orgdashboard.html'">Dashboard</div>
+      <div onclick="location.href='orgbankaccount.html'">Bank Account</div>
+      <div id="orgLogoutBtn">Logout</div>
+    </div>
+  </div>
+</header>
+
+<div class="summary-nav">
+  <a href="orgdashboard.html">
+    <img src="../images/icon_back.png">
+  </a>
+  <div>
+    <a href="manageuser.html?mode=add">
+      <img src="../images/icon_add.png">
+    </a>
+  </div>
+</div>
+
+<!-- FULL WIDTH WRAPPER -->
+<div class="org-page-wrapper">
+
+  <div class="org-user-tile">
+      <img src="../images/user1.jpg" class="user-square">
+      <div class="user-details">
+          <h3>Rahul Mehta</h3>
+          <p>Administrator</p>
+      </div>
+      <img src="../images/icon_edit.png" class="user-edit-icon"
+           onclick="location.href='manageuser.html?mode=edit'">
+  </div>
+
+  <div class="org-user-tile">
+      <img src="../images/user2.jpg" class="user-square">
+      <div class="user-details">
+          <h3>Priya Shah</h3>
+          <p>Admissions Manager</p>
+      </div>
+      <img src="../images/icon_edit.png" class="user-edit-icon"
+           onclick="location.href='manageuser.html?mode=edit'">
+  </div>
+
+</div>
+
+<footer class="footer">
+  © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<script src="../script/orgscript.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage User - Enrol Me</title>
+<link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <a href="../index.html">
+      <img src="../images/icon_home.png" class="nav-icon">
+    </a>
+  </div>
+
+  <div class="profile">
+    <img src="../images/icon_person.png" id="profileIcon" class="nav-icon">
+    <div class="profile-menu" id="profileMenu">
+      <div onclick="location.href='orgdashboard.html'">Dashboard</div>
+      <div onclick="location.href='orgbankaccount.html'">Bank Account</div>
+      <div id="orgLogoutBtn">Logout</div>
+    </div>
+  </div>
+</header>
+
+<div class="summary-nav">
+  <a href="myusers.html">
+    <img src="../images/icon_back.png">
+  </a>
+  <div>
+    <img src="../images/icon_save.png" id="orgUserSaveBtn">
+  </div>
+</div>
+
+<!-- THIS USES LOGIN STYLE CARD -->
+<div class="org-container">
+
+  <h2>Add / Edit User</h2>
+
+  <form class="org-form" id="orgUserForm">
+
+    <div class="form-group">
+      <input type="text" id="fullName" placeholder="Enter First Name">
+    </div>
+
+    <div class="form-group">
+      <input type="text" placeholder="Enter Last Name">
+    </div>
+
+    <div class="form-group">
+      <input type="text" placeholder="Enter Branch User Id">
+    </div>
+
+    <div class="form-group">
+      <input type="email" id="email" placeholder="Enter Email">
+    </div>
+
+    <div class="form-group">
+      <input type="text" placeholder="Enter Mobile Number">
+    </div>
+
+    <div class="form-group">
+      <select>
+        <option value="">Select City</option>
+        <option>Mumbai</option>
+        <option>Pune</option>
+        <option>Delhi</option>
+      </select>
+    </div>
+
+  </form>
+
+</div>
+
+<footer class="footer">
+  © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<script src="../script/orgscript.js"></script>
+</body>
+</html>

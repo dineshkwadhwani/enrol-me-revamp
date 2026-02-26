@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organization Registration</title>
+
+<link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+
+<body>
+
+<header class="org-header">
+    <a href="../index.html">
+        <img src="../images/icon_enrolme.png" class="org-logo">
+    </a>
+</header>
+
+<div class="org-container">
+
+    <h2>Organization Registration</h2>
+
+    <form class="org-form" id="orgRegisterForm">
+
+        <div class="form-group">
+            <select id="orgCategory">
+                <option value="">Select Category</option>
+                <option>Educational Institutes</option>
+                <option>Coaching Classes</option>
+                <option>Sports Academy</option>
+                <option>Activity Classes</option>
+                <option>Health & Fitness</option>
+                <option>Private Learning</option>
+            </select>
+            <div class="field-error" id="errorCategory"></div>
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="orgName" placeholder="Enter Organization Name">
+            <div class="field-error" id="errorOrgName"></div>
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="orgUserIdReg" placeholder="Enter Organization User ID">
+            <div class="field-error" id="errorUserId"></div>
+        </div>
+
+        <div class="form-group">
+            <input type="email" id="orgEmail" placeholder="Enter Organization Email">
+            <div class="field-error" id="errorEmail"></div>
+        </div>
+
+        <div class="form-group">
+            <input type="tel" id="orgPhone" placeholder="Enter Organization Phone">
+            <div class="field-error" id="errorPhone"></div>
+        </div>
+
+        <div class="form-group">
+            <select id="orgCity">
+                <option value="">Select City</option>
+                <option>Pune</option>
+                <option>Mumbai</option>
+                <option>Delhi</option>
+                <option>Bangalore</option>
+            </select>
+            <div class="field-error" id="errorCity"></div>
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="orgArea" placeholder="Enter City Area">
+            <div class="field-error" id="errorArea"></div>
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="orgContactName" placeholder="Enter Contact Person Name">
+            <div class="field-error" id="errorContactName"></div>
+        </div>
+
+        <div class="form-group">
+            <input type="tel" id="orgContactMobile" placeholder="Enter Contact Person Mobile Number">
+            <div class="field-error" id="errorContactMobile"></div>
+        </div>
+
+        <div class="org-radio-group">
+            <label>
+                <input type="radio" name="branchType" value="Single" checked>
+                Single Branch
+            </label>
+
+            <label>
+                <input type="radio" name="branchType" value="Multiple">
+                Multiple Branch
+            </label>
+        </div>
+
+        <div class="org-terms">
+            <input type="checkbox" id="orgTerms">
+            <span>
+                I have read and agree to the Terms and Conditions and Privacy Policy.
+            </span>
+        </div>
+
+        <div class="org-btn-row">
+            <button type="button" class="org-primary-btn" id="orgRegisterBtn">
+                Register
+            </button>
+
+            <button type="button" class="org-cancel-btn"
+                onclick="location.href='orglogin.html'">
+                Cancel
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+<script src="../script/orgscript.js"></script>
+</body>
+</html>

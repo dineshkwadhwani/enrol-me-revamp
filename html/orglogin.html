@@ -4,46 +4,65 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Organization Login - Enrol Me</title>
-<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="../css/orgstyle.css">
 </head>
+
 <body>
 
-<header class="header">
-    <div class="header-left">
-        <a href="index.html">
-            <img src="images/icon_home.png" class="nav-icon">
-        </a>
-    </div>
+<header class="org-header">
+    <a href="../index.html">
+        <img src="../images/icon_enrolme.png" class="org-logo">
+    </a>
 </header>
 
-<section class="profile-container">
-    <h2 style="margin-bottom:25px;">Organization Login / Signup</h2>
+<div class="org-container">
 
-    <form class="profile-form">
-        <div class="field-wrapper">
-            <label class="profile-label">Organization Name</label>
-            <input type="text" placeholder="Enter Organization Name">
+    <h2>Organization Login</h2>
+
+    <form class="org-form" id="orgLoginForm">
+
+        <!-- USER ID -->
+        <div class="form-group">
+            <input type="text" id="orgUserId" placeholder="Enter User ID">
+            <div class="field-error" id="orgLoginError"></div>
         </div>
 
-        <div class="field-wrapper">
-            <label class="profile-label">Official Email</label>
-            <input type="email" placeholder="Enter Official Email">
+        <!-- OTP -->
+        <div class="form-group" id="otpGroup" style="display:none;">
+            <input type="text" id="orgOtp" placeholder="Enter OTP">
         </div>
 
-        <div class="field-wrapper">
-            <label class="profile-label">Mobile Number</label>
-            <input type="text" placeholder="Enter 10-digit Mobile Number">
-        </div>
-
-        <button type="button" class="primary-btn" style="margin-top:20px;">
+        <!-- CONTINUE BUTTON FULL WIDTH -->
+        <button type="button"
+            class="org-primary-btn org-login-btn"
+            id="orgLoginBtn">
             Continue
         </button>
-    </form>
-</section>
 
-<footer class="footer">
-  © Enrol-Me 2026 | Customer Care: +91 96041 88725
-</footer>
+
+        <!-- REGISTER / CANCEL -->
+        <div class="org-btn-row">
+
+            <button type="button"
+                class="org-primary-btn"
+                onclick="location.href='orgregister.html'">
+                Register
+            </button>
+
+            <button type="button"
+                class="org-cancel-btn"
+                onclick="location.href='../index.html'">
+                Cancel
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<script src="../script/orgscript.js"></script>
 
 </body>
 </html>

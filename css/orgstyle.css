@@ -1,0 +1,327 @@
+/* ================= ROOT BRAND COLORS ================= */
+
+:root{
+    --primary:#900000;
+    --primary-hover:#750000;
+    --light-bg:#f6e3df;
+    --page-bg:#f4f4f4;
+    --border:#d8d8d8;
+    --error:#c20000;
+    --text:#333;
+}
+
+/* ================= GLOBAL ================= */
+
+*{ box-sizing:border-box; }
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:var(--page-bg);
+    color:var(--text);
+}
+
+/* =========================================================
+   ORG LOGIN / REGISTER PAGES
+   ========================================================= */
+
+.org-header{
+    padding:20px 30px;
+}
+
+.org-logo{
+    height:42px;
+}
+
+.org-container{
+    max-width:480px;
+    margin:40px auto;
+    background:white;
+    padding:40px;
+    border-radius:14px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.08);
+}
+
+.org-container h2{
+    text-align:center;
+    margin-bottom:30px;
+    font-weight:600;
+}
+
+.org-form{
+    display:flex;
+    flex-direction:column;
+}
+
+/* FORM GROUP */
+
+.form-group{
+    margin-bottom:18px;
+    width:100%;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:14px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    font-size:14px;
+    background:#fff;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    outline:none;
+    border:1px solid var(--primary);
+}
+
+/* ERROR TEXT */
+
+.field-error{
+    font-size:12px;
+    color:var(--error);
+    margin-top:6px;
+    min-height:16px;
+}
+
+/* BUTTONS */
+
+.org-primary-btn{
+    padding:14px;
+    background:var(--primary);
+    color:white;
+    border:none;
+    border-radius:12px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.org-primary-btn:hover{
+    background:var(--primary-hover);
+}
+
+.org-login-btn{
+    width:100%;
+    margin:10px 0 25px 0;
+}
+
+.org-btn-row{
+    display:flex;
+    gap:20px;
+}
+
+.org-btn-row button{
+    flex:1;
+}
+
+.org-cancel-btn{
+    background:var(--light-bg);
+    color:var(--primary);
+    border:1px solid var(--primary);
+    border-radius:12px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.org-cancel-btn:hover{
+    background:var(--primary);
+    color:white;
+}
+
+/* =========================================================
+   ORG DASHBOARD HEADER
+   ========================================================= */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 30px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.nav-icon{
+    width:28px;
+    height:28px;
+    cursor:pointer;
+}
+
+.profile{
+    position:relative;
+}
+
+.profile-menu{
+    position:absolute;
+    right:0;
+    top:40px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:8px;
+    display:none;
+    min-width:160px;
+    z-index:1000;
+}
+
+.profile-menu div{
+    padding:10px 15px;
+    cursor:pointer;
+}
+
+.profile-menu div:hover{
+    background:var(--light-bg);
+}
+
+.profile-menu.active{
+    display:block;
+}
+
+/* =========================================================
+   SUMMARY NAV
+   ========================================================= */
+
+.summary-nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+    background:var(--light-bg);
+}
+
+.summary-nav img{
+    width:28px;
+    height:28px;
+    cursor:pointer;
+}
+
+/* =========================================================
+   FORM CONTAINER (BANK PAGE)
+   ========================================================= */
+
+.form-container{
+    max-width:600px;
+    margin:40px auto;
+    background:#fff;
+    padding:40px;
+    border-radius:14px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.08);
+}
+
+.field-wrapper{
+    margin-bottom:20px;
+}
+
+.field-wrapper input,
+.field-wrapper select{
+    width:100%;
+    padding:14px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    font-size:14px;
+}
+
+.field-wrapper input:disabled,
+.field-wrapper select:disabled{
+    background:#eee;
+}
+
+.field-wrapper input:focus,
+.field-wrapper select:focus{
+    outline:none;
+    border:1px solid var(--primary);
+}
+
+.success-message{
+    background:#e7f7e7;
+    color:green;
+    padding:10px;
+    border-radius:6px;
+    margin-bottom:20px;
+    display:none;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer{
+    text-align:center;
+    padding:20px;
+    background:#fff;
+    border-top:1px solid var(--border);
+    margin-top:40px;
+}
+
+/* =========================================================
+   ✅ NEW: MY USERS PAGE STYLES (APPENDED ONLY)
+   ========================================================= */
+
+.org-page-wrapper{
+    max-width:1000px;
+    margin:40px auto;
+    padding:0 30px;
+}
+
+.org-user-tile{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    background:#fff;
+    padding:20px;
+    border-radius:14px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.06);
+    margin-bottom:20px;
+    position:relative;
+    cursor:pointer;
+    transition:0.2s ease;
+}
+
+.org-user-tile:hover{
+    box-shadow:0 6px 22px rgba(0,0,0,0.1);
+}
+
+.user-square{
+    width:80px;
+    height:80px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.user-details h3{
+    margin:0;
+    font-size:18px;
+    font-weight:600;
+}
+
+.user-details p{
+    margin-top:6px;
+    color:#666;
+}
+
+.user-edit-icon{
+    position:absolute;
+    top:20px;
+    right:20px;
+    width:22px;
+    height:22px;
+    cursor:pointer;
+}
+
+/* Manage user form override */
+
+.org-form-wrapper{
+    max-width:600px;
+    margin:40px auto;
+    background:#fff;
+    padding:40px;
+    border-radius:14px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.08);
+}
