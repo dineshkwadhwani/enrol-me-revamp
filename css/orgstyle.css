@@ -336,3 +336,132 @@ body{
     width:22px;
     height:22px;
 }
+
+/* =========================================================
+   ORG PROGRAM TILES
+   ========================================================= */
+
+.org-program-tile{
+    padding:30px;
+    border-radius:22px;
+    transition:0.2s ease;
+}
+
+.org-program-tile.active{
+    background:var(--light-bg);
+}
+
+.org-program-tile.inactive{
+    background:#e5e5e5;
+}
+
+.org-program-tile h3{
+    color:var(--primary);
+    margin-top:0;
+}
+
+
+
+/* =========================================================
+   PROGRAM ACTION BUTTONS (PILL STYLE)
+   ========================================================= */
+
+.btn-pill{
+    padding:14px 32px;
+    border:none;
+    border-radius:50px;           /* Fully rounded pill */
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.2s ease;
+    min-width:140px;
+}
+
+/* RED PRIMARY (Delete / Deactivate) */
+
+
+.btn-danger:hover{
+    background:var(--primary-hover);
+}
+
+/* OUTLINE BUTTON (Edit) */
+
+
+
+.btn-outline:hover{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* LIGHT BUTTON (Copy Link) */
+
+
+
+.btn-light:hover{
+    background:#ddd;
+}
+
+.program-actions{
+    margin-top:25px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:18px;
+}
+
+/* Base pill button */
+
+.program-btn{
+    padding:14px 40px;
+    border:none;
+    border-radius:25px;
+    font-weight:600;
+    font-size:16px;
+    cursor:pointer;
+    text-align:center;
+    transition:0.2s ease;
+}
+
+/* Primary red button */
+
+.program-btn.primary{
+    background:var(--primary);
+    color:#fff;
+}
+
+.program-btn.primary:hover{
+    background:var(--primary-hover);
+}
+
+/* Light button (Edit / Copy Link) */
+
+.program-btn.light{
+    background:#efefef;
+    color:#000;
+}
+
+/* Make Copy Link full width under row */
+
+.program-btn.full{
+    grid-column: 1 / span 2;
+}
+
+textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    font-size:14px;
+    min-height:100px;
+}
+
+.field-error-message{
+    color:var(--error);
+    font-size:13px;
+    margin-bottom:6px;
+    display:none;
+    font-weight:500;
+}
+
+.required-error{
+    border:2px solid var(--error) !important;
+}

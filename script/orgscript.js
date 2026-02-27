@@ -360,3 +360,148 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
 });
+
+/* =========================================================
+   ORG MY PROGRAMS LOGIC
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    /* ================= EDIT BUTTON ================= */
+
+    document.querySelectorAll(".btn-edit").forEach(btn => {
+        btn.addEventListener("click", function(){
+            const tile = this.closest(".org-program-tile");
+            const programId = tile.dataset.id;
+            location.href = "manageprogram.html?mode=edit&id=" + programId;
+        });
+    });
+
+
+    /* ================= ACTIVATE / DEACTIVATE ================= */
+
+    document.querySelectorAll(".btn-deactivate, .btn-activate").forEach(btn => {
+
+        btn.addEventListener("click", function(){
+
+            const tile = this.closest(".org-program-tile");
+            const isActive = tile.classList.contains("active");
+
+            if(isActive){
+
+                if(!confirm("Deactivate this program?")) return;
+
+                tile.classList.remove("active");
+                tile.classList.add("inactive");
+
+                this.textContent = "Activate";
+                this.classList.remove("btn-deactivate");
+                this.classList.add("btn-activate");
+
+            } else {
+
+                if(!confirm("Activate this program?")) return;
+
+                tile.classList.remove("inactive");
+                tile.classList.add("active");
+
+                this.textContent = "Deactivate";
+                this.classList.remove("btn-activate");
+                this.classList.add("btn-deactivate");
+            }
+        });
+
+    });
+
+
+    /* ================= COPY LINK ================= */
+
+    document.querySelectorAll(".btn-copy").forEach(btn => {
+
+        btn.addEventListener("click", function(){
+
+            const tile = this.closest(".org-program-tile");
+            const programId = tile.dataset.id;
+
+            const link =
+              `https://www.enrol-me.com/EnrolMe/searchresult.html?progCity=Pune&progCategory=2&progKeyWord=&programId=${programId}&progSubCategory=89`;
+
+            navigator.clipboard.writeText(link);
+            alert("Program link copied to clipboard");
+        });
+
+    });
+
+
+    /* ================= MANAGE PROGRAM PREFILL ================= */
+
+    const programForm = document.getElementById("programForm");
+
+    if(programForm){
+
+        const params = new URLSearchParams(window.location.search);
+
+        if(params.get("mode") === "edit"){
+            document.getElementById("progName").value = "CBSE Admission 2026";
+            document.getElementById("startDate").value = "2026-01-01";
+            document.getElementById("endDate").value = "2026-03-31";
+            document.getElementById("status").value = "Active";
+            document.getElementById("students").value = "42";
+        }
+
+        document.getElementById("saveProgramBtn")?.addEventListener("click", function(){
+            alert("Program saved successfully");
+            location.href="orgmyprograms.html";
+        });
+    }
+
+});
+
+/* ================= MANAGE PROGRAM VALIDATION ================= */
+
+const saveProgramBtn = document.getElementById("saveProgramBtn");
+const programForm = document.getElementById("programForm");
+
+if(saveProgramBtn && programForm){
+
+    saveProgramBtn.addEventListener("click", function(){
+
+        let valid = true;
+
+        function validateField(id){
+            const field = document.getElementById(id);
+            const error = document.getElementById(id+"Error");
+
+            if(field && field.value.trim() === ""){
+                field.classList.add("required-error");
+                if(error) error.style.display="block";
+                valid = false;
+            } else {
+                field.classList.remove("required-error");
+                if(error) error.style.display="none";
+            }
+        }
+
+        const requiredFields = [
+            "session",
+            "subCategory",
+            "applicationForm",
+            "programName",
+            "capacity",
+            "fromDate",
+            "toDate",
+            "lastDate",
+            "feeUnit"
+        ];
+
+        requiredFields.forEach(id => validateField(id));
+
+        if(!valid){
+            alert("Please fill all mandatory fields");
+            return;
+        }
+
+        alert("Program saved successfully");
+        location.href="orgmyprograms.html";
+    });
+}

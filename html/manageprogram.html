@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Program</title>
+<link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <div class="header-left">
+        <a href="../index.html">
+            <img src="../images/icon_home.png" class="nav-icon">
+        </a>
+    </div>
+
+    <div class="profile">
+        <img src="../images/icon_person.png" id="profileIcon" class="nav-icon">
+        <div class="profile-menu" id="profileMenu">
+            <div onclick="location.href='orgdashboard.html'">Dashboard</div>
+            <div onclick="location.href='orgbankaccount.html'">Bank Account</div>
+            <div id="orgLogoutBtn">Logout</div>
+        </div>
+    </div>
+</header>
+
+<!-- ================= SUMMARY NAV ================= -->
+<div class="summary-nav">
+    <a href="orgmyprograms.html">
+        <img src="../images/icon_back.png">
+    </a>
+    <div>
+        <img src="../images/icon_save.png" id="saveProgramBtn">
+    </div>
+</div>
+
+<!-- ================= FORM ================= -->
+<div class="form-container">
+
+<form id="programForm">
+
+<!-- SESSION -->
+<div class="field-wrapper">
+    <div class="field-error-message" id="sessionError">Required</div>
+    <select id="session">
+        <option value="">Select Session</option>
+        <option>2025-26</option>
+        <option>2026-27</option>
+    </select>
+</div>
+
+<!-- SUB CATEGORY -->
+<div class="field-wrapper">
+    <div class="field-error-message" id="subCategoryError">Required</div>
+    <select id="subCategory">
+        <option value="">Select Sub Category</option>
+        <option>Science</option>
+        <option>Commerce</option>
+    </select>
+</div>
+
+<!-- APPLICATION FORM -->
+<div class="field-wrapper">
+    <div class="field-error-message" id="applicationFormError">Required</div>
+    <select id="applicationForm">
+        <option value="">Select Application Form</option>
+        <option>Standard</option>
+        <option>Advanced</option>
+    </select>
+</div>
+
+<!-- NAME -->
+<div class="field-wrapper">
+    <div class="field-error-message" id="programNameError">Required</div>
+    <input type="text" id="programName" placeholder="Enter Name">
+</div>
+
+<!-- DESCRIPTION -->
+<div class="field-wrapper">
+    <textarea id="description" placeholder="Enter Description"></textarea>
+</div>
+
+<!-- CAPACITY -->
+<div class="field-wrapper">
+    <div class="field-error-message" id="capacityError">Required</div>
+    <input type="number" id="capacity" placeholder="Enter Capacity">
+</div>
+
+<!-- DATES -->
+<label>From Date :</label>
+<div class="field-wrapper">
+    <div class="field-error-message" id="fromDateError">Required</div>
+    <input type="date" id="fromDate">
+</div>
+
+<label>To Date :</label>
+<div class="field-wrapper">
+    <div class="field-error-message" id="toDateError">Required</div>
+    <input type="date" id="toDate">
+</div>
+
+<label>Application Submission Last Date :</label>
+<div class="field-wrapper">
+    <div class="field-error-message" id="lastDateError">Required</div>
+    <input type="date" id="lastDate">
+</div>
+
+<!-- FEE MODE -->
+<label>Select Fee collection mode :</label>
+<div class="field-wrapper">
+    <select id="feeMode" multiple>
+        <option>Monthly</option>
+        <option>Quarterly</option>
+        <option>Yearly</option>
+        <option>Half Yearly</option>
+        <option>One Time</option>
+    </select>
+</div>
+
+<!-- APPLICATION FEE -->
+<label>Application Form Fee : ₹</label>
+<div class="field-wrapper">
+    <input type="number" id="applicationFee">
+</div>
+
+<!-- ADMISSION TYPE -->
+<label>Admission Fee Type :</label>
+<div>
+    <input type="radio" name="admissionType" value="Fixed" checked> Fixed
+    <input type="radio" name="admissionType" value="Variable"> Variable
+</div>
+
+<label>Admission Fee : ₹</label>
+<div class="field-wrapper">
+    <input type="number" id="admissionFee">
+</div>
+
+<!-- PROGRAM FEE TYPE -->
+<label>Program Fee Type :</label>
+<div>
+    <input type="radio" name="programFeeType" value="Fixed" checked> Fixed
+    <input type="radio" name="programFeeType" value="Variable"> Variable
+</div>
+
+<label>Program Fee : ₹</label>
+<div class="field-wrapper">
+    <input type="number" id="programFee">
+</div>
+
+<!-- FEE UNIT -->
+<div class="field-wrapper">
+    <div class="field-error-message" id="feeUnitError">Required</div>
+    <select id="feeUnit">
+        <option value="">Select Fee Unit</option>
+        <option>Per Month</option>
+        <option>Per Year</option>
+    </select>
+</div>
+
+<!-- TRANSACTION CHARGES -->
+<label>Transaction Charges in Fees :</label>
+<div>
+    <input type="radio" name="transactionCharge" value="Org" checked> Borne by Organization
+    <input type="radio" name="transactionCharge" value="Applicant"> Borne by Applicant
+</div>
+
+<!-- URL -->
+<div class="field-wrapper">
+    <input type="text" id="urlTitle" placeholder="Url Title">
+</div>
+
+<div class="field-wrapper">
+    <input type="text" id="url" placeholder="Url">
+</div>
+
+</form>
+
+</div>
+
+<footer class="footer">
+© Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<script src="../script/orgscript.js"></script>
+</body>
+</html>
