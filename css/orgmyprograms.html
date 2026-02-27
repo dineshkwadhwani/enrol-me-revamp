@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Programs - Enrol Me</title>
+<link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <a href="../index.html">
+      <img src="../images/icon_home.png" class="nav-icon">
+    </a>
+  </div>
+
+  <div class="profile">
+    <img src="../images/icon_person.png" id="profileIcon" class="nav-icon">
+    <div class="profile-menu" id="profileMenu">
+      <div onclick="location.href='orgdashboard.html'">Dashboard</div>
+      <div onclick="location.href='orgbankaccount.html'">Bank Account</div>
+      <div id="orgLogoutBtn">Logout</div>
+    </div>
+  </div>
+</header>
+
+<div class="summary-nav">
+  <a href="orgdashboard.html">
+    <img src="../images/icon_back.png">
+  </a>
+  <div>
+    <a href="manageprogram.html?mode=add">
+      <img src="../images/icon_add.png">
+    </a>
+  </div>
+</div>
+
+<div class="org-page-wrapper" id="programContainer">
+
+  <!-- ACTIVE PROGRAM -->
+  <div class="org-program-tile active" data-id="4229">
+    <h3>CBSE Admission 2026</h3>
+    <p><strong>Start:</strong> 01 Jan 2026</p>
+    <p><strong>End:</strong> 31 Mar 2026</p>
+    <p><strong>Status:</strong> Active</p>
+    <p><strong>Students:</strong> 42</p>
+
+    <div class="program-actions">
+      <button class="btn-edit">Edit</button>
+      <button class="btn-deactivate">Deactivate</button>
+      <button class="btn-copy">Copy Link</button>
+    </div>
+  </div>
+
+  <!-- INACTIVE PROGRAM -->
+  <div class="org-program-tile inactive" data-id="4235">
+    <h3>IIT Foundation Course</h3>
+    <p><strong>Start:</strong> 01 Feb 2026</p>
+    <p><strong>End:</strong> 31 May 2026</p>
+    <p><strong>Status:</strong> Inactive</p>
+    <p><strong>Students:</strong> 28</p>
+
+    <div class="program-actions">
+      <button class="btn-edit">Edit</button>
+      <button class="btn-activate">Activate</button>
+      <button class="btn-copy">Copy Link</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<script src="../script/orgscript.js"></script>
+</body>
+</html>
