@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Application Form</title>
+<link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-left">
+        <a href="../index.html">
+            <img src="../images/icon_home.png" class="nav-icon">
+        </a>
+    </div>
+    <div class="profile">
+        <img src="../images/icon_person.png" id="profileIcon" class="nav-icon">
+        <div class="profile-menu" id="profileMenu">
+            <div onclick="location.href='orgdashboard.html'">Dashboard</div>
+            <div onclick="location.href='orgbankaccount.html'">Bank Account</div>
+            <div id="orgLogoutBtn">Logout</div>
+        </div>
+    </div>
+</header>
+
+<div class="summary-nav">
+    <a href="orgapplicationforms.html">
+        <img src="../images/icon_back.png">
+    </a>
+    <div>
+        <img src="../images/icon_save.png" id="saveApplicationFormBtn">
+    </div>
+</div>
+
+<div class="form-container">
+
+<div class="field-wrapper">
+    <div class="field-error-message" id="formNameError">Required</div>
+    <input type="text" id="formName" placeholder="Enter Form Name">
+</div>
+
+<!-- SECTION 1 -->
+<div class="app-section">
+<h3>Select the fields you want in your application form</h3>
+
+<select id="availableFields">
+    <option value="">Select Field</option>
+    <option>Address</option>
+    <option>Father's Name</option>
+    <option>Income Group</option>
+    <option>Age</option>
+    <option>Sex</option>
+    <option>Blood Group</option>
+    <option>Religion</option>
+    <option>Date of Birth</option>
+</select>
+
+<button class="org-primary-btn" id="addFieldBtn" style="margin-top:20px;">Add</button>
+</div>
+
+<!-- SECTION 2 -->
+<div class="app-section" style="margin-top:40px;">
+<h3>Current fields in your application form</h3>
+
+<ul id="selectedFieldsList" class="field-list">
+    <li>First Name (Mandatory)</li>
+    <li>Last Name (Mandatory)</li>
+    <li>Mobile (Mandatory)</li>
+    <li>City (Mandatory)</li>
+    <li>Email (Mandatory)</li>
+</ul>
+
+</div>
+
+</div>
+
+<footer class="footer">
+© Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<script src="../script/orgscript.js"></script>
+</body>
+</html>
