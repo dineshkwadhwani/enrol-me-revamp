@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Application Form</title>
+<link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <div class="header-left">
+        <a href="../index.html">
+            <img src="../images/icon_home.png" class="nav-icon">
+        </a>
+    </div>
+    <div class="profile">
+        <img src="../images/icon_person.png" id="profileIcon" class="nav-icon">
+        <div class="profile-menu" id="profileMenu">
+            <div onclick="location.href='orgdashboard.html'">Dashboard</div>
+            <div onclick="location.href='orgbankaccount.html'">Bank Account</div>
+            <div id="orgLogoutBtn">Logout</div>
+        </div>
+    </div>
+</header>
+
+<!-- ================= SUMMARY NAV ================= -->
+<div class="summary-nav">
+    <a href="orgapplicationforms.html">
+        <img src="../images/icon_back.png">
+    </a>
+    <div>
+        <img src="../images/icon_save.png" id="saveApplicationFormBtn">
+    </div>
+</div>
+
+<div class="form-container">
+
+<!-- ================= FORM NAME ================= -->
+<div class="field-wrapper">
+    <div class="field-error-message" id="formNameError">Required</div>
+    <input type="text" id="formName" placeholder="Enter Form Name">
+</div>
+
+<!-- ================= FORM DESCRIPTION ================= -->
+<div class="field-wrapper">
+    <textarea id="formDescription" placeholder="Enter Form Description"></textarea>
+</div>
+
+<!-- ================= SECTION 1 ================= -->
+<div class="app-section">
+
+<h3>Select the fields you want in your application form</h3>
+
+<div class="field-wrapper">
+    <select id="fieldNameSelect">
+        <option value="">Select Field</option>
+        <option>Address</option>
+        <option>Father's Name</option>
+        <option>Income Group</option>
+        <option>Age</option>
+        <option>Sex</option>
+        <option>Blood Group</option>
+        <option>Religion</option>
+        <option>Date of Birth</option>
+        <option>Photo</option>
+    </select>
+</div>
+
+<label>Field Details (Multi Select)</label>
+
+<div class="field-wrapper">
+    <select id="fieldDetailsSelect" multiple size="8">
+        <option>Required</option>
+        <option>MinValue:10</option>
+        <option>MaxValue:250</option>
+        <option>MinChar:2</option>
+        <option>MinChar:10</option>
+        <option>MaxChar:10</option>
+        <option>MaxChar:250</option>
+    </select>
+</div>
+
+<div class="field-wrapper">
+    <input type="number" id="fieldOrder" placeholder="Display Order">
+</div>
+
+<div style="text-align:center; margin-top:25px;">
+    <button class="org-primary-btn" id="addFieldBtn">Add</button>
+</div>
+
+</div>
+
+<!-- ================= SECTION 2 ================= -->
+<div class="app-section" style="margin-top:40px;">
+
+<h3>Current fields in your application form</h3>
+
+<table class="field-table" id="selectedFieldsTable">
+    <thead>
+        <tr>
+            <th>Field</th>
+            <th>Details</th>
+            <th>Order</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-locked="true">
+            <td>First Name</td>
+            <td>Mandatory</td>
+            <td>1</td>
+            <td>Locked</td>
+        </tr>
+        <tr data-locked="true">
+            <td>Last Name</td>
+            <td>Mandatory</td>
+            <td>2</td>
+            <td>Locked</td>
+        </tr>
+        <tr data-locked="true">
+            <td>Mobile</td>
+            <td>Mandatory</td>
+            <td>3</td>
+            <td>Locked</td>
+        </tr>
+        <tr data-locked="true">
+            <td>City</td>
+            <td>Mandatory</td>
+            <td>4</td>
+            <td>Locked</td>
+        </tr>
+        <tr data-locked="true">
+            <td>Email</td>
+            <td>Mandatory</td>
+            <td>5</td>
+            <td>Locked</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+
+</div>
+
+<footer class="footer">
+© Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<script src="../script/orgscript.js"></script>
+<script src="../script/applicationform-builder.js"></script>
+
+</body>
+</html>

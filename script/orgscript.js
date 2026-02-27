@@ -505,3 +505,166 @@ if(saveProgramBtn && programForm){
         location.href="orgmyprograms.html";
     });
 }
+
+/* =========================================================
+   APPLICATION FORM LOGIC
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    /* ===== LIST PAGE ACTIVATE / DEACTIVATE ===== */
+
+    document.querySelectorAll(".btn-toggle-form").forEach(btn=>{
+        btn.addEventListener("click", function(){
+
+            const tile = this.closest(".org-program-tile");
+            const active = tile.classList.contains("active");
+
+            if(active){
+                if(!confirm("Deactivate this form?")) return;
+                tile.classList.remove("active");
+                tile.classList.add("inactive");
+                this.textContent="Activate";
+            } else {
+                if(!confirm("Activate this form?")) return;
+                tile.classList.remove("inactive");
+                tile.classList.add("active");
+                this.textContent="Deactivate";
+            }
+        });
+    });
+
+    /* ===== EDIT NAVIGATION ===== */
+
+    document.querySelectorAll(".btn-edit-form").forEach(btn=>{
+        btn.addEventListener("click", function(){
+            location.href="manageapplicationform.html?mode=edit";
+        });
+    });
+
+    /* ===== BUILDER PAGE ===== */
+
+    const addFieldBtn = document.getElementById("addFieldBtn");
+    const availableFields = document.getElementById("availableFields");
+    const selectedFieldsList = document.getElementById("selectedFieldsList");
+
+    if(addFieldBtn){
+
+        addFieldBtn.addEventListener("click", function(){
+
+            const value = availableFields.value;
+
+            if(value==="") return;
+
+            const exists = Array.from(selectedFieldsList.children)
+                .some(li => li.textContent.includes(value));
+
+            if(exists){
+                alert("Field already added");
+                return;
+            }
+
+            const li = document.createElement("li");
+            li.textContent=value;
+            selectedFieldsList.appendChild(li);
+        });
+    }
+
+    /* ===== SAVE VALIDATION ===== */
+
+    const saveBtn = document.getElementById("saveApplicationFormBtn");
+
+    if(saveBtn){
+        saveBtn.addEventListener("click", function(){
+
+            const name = document.getElementById("formName");
+            const error = document.getElementById("formNameError");
+
+            if(name.value.trim()===""){
+                name.classList.add("required-error");
+                error.style.display="block";
+                return;
+            }
+
+            alert("Application Form Saved Successfully");
+            location.href="orgapplicationforms.html";
+        });
+    }
+
+});
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const addBtn = document.getElementById("addFieldBtn");
+const tableBody = document.querySelector("#selectedFieldsTable tbody");
+
+if(addBtn){
+
+addBtn.addEventListener("click", function(){
+
+    const fieldName = document.getElementById("fieldNameSelect").value;
+    const detailsSelect = document.getElementById("fieldDetailsSelect");
+    const orderInput = document.getElementById("fieldOrder");
+
+    if(fieldName===""){
+        alert("Select Field Name");
+        return;
+    }
+
+    let order = parseInt(orderInput.value);
+    if(!order || order < 1){
+        alert("Enter valid display order");
+        return;
+    }
+
+    const selectedDetails = Array.from(detailsSelect.selectedOptions)
+        .map(option => option.value)
+        .join(", ");
+
+    const rows = Array.from(tableBody.rows);
+    const totalRows = rows.length;
+
+    if(order > totalRows + 1){
+        order = totalRows + 1;
+    }
+
+    // Shift existing rows
+    rows.forEach(row=>{
+        const currentOrder = parseInt(row.cells[2].innerText);
+        if(currentOrder >= order){
+            row.cells[2].innerText = currentOrder + 1;
+        }
+    });
+
+    // Insert new row
+    const newRow = tableBody.insertRow();
+    newRow.innerHTML = `
+        <td>${fieldName}</td>
+        <td>${selectedDetails}</td>
+        <td>${order}</td>
+        <td><button onclick="this.closest('tr').remove()">Delete</button></td>
+    `;
+
+});
+
+}
+
+/* SAVE VALIDATION */
+
+document.getElementById("saveApplicationFormBtn")
+?.addEventListener("click", function(){
+
+    const formName = document.getElementById("formName");
+    const error = document.getElementById("formNameError");
+
+    if(formName.value.trim()===""){
+        formName.classList.add("required-error");
+        error.style.display="block";
+        return;
+    }
+
+    alert("Application Form Saved Successfully");
+    location.href="orgapplicationforms.html";
+});
+
+});

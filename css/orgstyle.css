@@ -465,3 +465,48 @@ textarea{
 .required-error{
     border:2px solid var(--error) !important;
 }
+
+/* ================= APPLICATION FORM BUILDER ================= */
+
+.app-section{
+    border:2px solid var(--border);
+    padding:25px;
+    border-radius:14px;
+}
+
+.app-section h3{
+    margin-top:0;
+    margin-bottom:20px;
+    font-weight:600;
+}
+
+.field-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.field-list li{
+    padding:10px 0;
+    border-bottom:1px solid var(--border);
+}
+
+/* ================= APPLICATION FORM BUILDER ================= */
+
+.app-section{
+    border:2px solid var(--border);
+    padding:25px;
+    border-radius:14px;
+}
+
+.field-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.field-table th,
+.field-table td{
+    padding:12px;
+    border-bottom:1px solid var(--border);
+    text-align:left;
+}
