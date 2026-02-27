@@ -254,57 +254,80 @@ body{
 
 .footer{
     text-align:center;
-    padding:20px;
-    background:#fff;
-    border-top:1px solid var(--border);
-    margin-top:40px;
+    padding:35px 20px;
+    background:var(--light-bg);
+    font-size:16px;
+    font-weight:500;
+    margin-top:60px;
 }
 
 /* =========================================================
-   ✅ NEW: MY USERS PAGE STYLES (APPENDED ONLY)
+   ✅ NEW: MY USERS PAGE STYLES 
+   ========================================================= */
+
+/* =========================================================
+   MY USERS GRID LAYOUT (MATCH PROGRAM TILE STYLE)
    ========================================================= */
 
 .org-page-wrapper{
-    max-width:1000px;
+    max-width:1200px;
     margin:40px auto;
     padding:0 30px;
+
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap:40px;
 }
 
+/* Individual User Tile */
+
 .org-user-tile{
-    display:flex;
-    align-items:center;
-    gap:20px;
-    background:#fff;
-    padding:20px;
-    border-radius:14px;
-    box-shadow:0 4px 18px rgba(0,0,0,0.06);
-    margin-bottom:20px;
+    background:var(--light-bg);   /* Beige like program tiles */
+    padding:30px;
+    border-radius:22px;           /* Same rounded feel */
     position:relative;
     cursor:pointer;
     transition:0.2s ease;
+
+    display:flex;
+    align-items:center;
+    gap:20px;
 }
 
 .org-user-tile:hover{
-    box-shadow:0 6px 22px rgba(0,0,0,0.1);
+    transform:translateY(-3px);
 }
+
+/* Square Image */
 
 .user-square{
     width:80px;
     height:80px;
     object-fit:cover;
-    border-radius:8px;
+    border-radius:12px;
+}
+
+/* Text Section */
+
+.user-details{
+    flex:1;
 }
 
 .user-details h3{
     margin:0;
-    font-size:18px;
-    font-weight:600;
+    font-size:20px;
+    font-weight:700;
+    color:var(--primary);   /* Red title like program cards */
 }
 
 .user-details p{
-    margin-top:6px;
-    color:#666;
+    margin-top:8px;
+    font-size:15px;
+    font-weight:500;
+    color:#000;
 }
+
+/* Edit Icon */
 
 .user-edit-icon{
     position:absolute;
@@ -312,16 +335,4 @@ body{
     right:20px;
     width:22px;
     height:22px;
-    cursor:pointer;
-}
-
-/* Manage user form override */
-
-.org-form-wrapper{
-    max-width:600px;
-    margin:40px auto;
-    background:#fff;
-    padding:40px;
-    border-radius:14px;
-    box-shadow:0 4px 18px rgba(0,0,0,0.08);
 }
