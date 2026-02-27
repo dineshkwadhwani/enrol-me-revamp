@@ -403,9 +403,12 @@ body{
 
 .program-actions{
     margin-top:25px;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
+    display:flex;
     gap:18px;
+}
+
+.program-actions .program-btn{
+    flex:1;
 }
 
 /* Base pill button */
@@ -441,9 +444,7 @@ body{
 
 /* Make Copy Link full width under row */
 
-.program-btn.full{
-    grid-column: 1 / span 2;
-}
+
 
 textarea{
     width:100%;
@@ -564,3 +565,71 @@ textarea{
     background:#eee;
     color:#000;
 }
+
+/* ================= APPLICANTS ================= */
+
+.applicant-filters{
+    max-width:1200px;
+    margin:30px auto;
+    padding:0 30px;
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.applicant-filters select,
+.applicant-filters input{
+    padding:12px;
+    border-radius:10px;
+    border:1px solid var(--border);
+}
+
+.applicant-tile{
+    position:relative;
+}
+
+.applicant-checkbox{
+    position:absolute;
+    top:15px;
+    right:15px;
+    width:18px;
+    height:18px;
+}
+
+.status-label{
+    font-weight:600;
+    margin-top:8px;
+}
+
+/* Action menu */
+#applicantActionsMenu{
+    position:absolute;
+    right:0;
+    top:40px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:8px;
+    display:none;
+    min-width:200px;
+    z-index:2000;
+}
+
+#applicantActionsMenu div{
+    padding:10px 15px;
+    cursor:pointer;
+}
+
+#applicantActionsMenu div:hover{
+    background:var(--light-bg);
+}
+
+.status-label{
+    font-weight:600;
+    margin-top:8px;
+}
+
+[data-status="Pending"] .status-label{ color:#b58900; }
+[data-status="Selected"] .status-label{ color:#0056b3; }
+[data-status="Admitted"] .status-label{ color:#1e7e34; }
+[data-status="Rejected"] .status-label{ color:#b30000; }
+[data-status="Discontinued"] .status-label{ color:#6c757d; }

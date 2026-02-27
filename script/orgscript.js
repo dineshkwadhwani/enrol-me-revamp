@@ -719,3 +719,170 @@ tiles.forEach(tile=>{
 
 });
 });
+
+
+
+/* =========================================================
+   ORG APPLICANTS – STRICT 2 BUTTON LOGIC
+   ========================================================= */
+
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const container = document.getElementById("applicantContainer");
+const toggle = document.getElementById("applicantActionsToggle");
+const menu = document.getElementById("applicantActionsMenu");
+
+if(!container) return;
+
+/* ===== ACTION MENU TOGGLE ===== */
+
+toggle?.addEventListener("click", function(e){
+    e.stopPropagation();
+    menu.style.display = menu.style.display==="block" ? "none":"block";
+});
+
+document.addEventListener("click", function(){
+    if(menu) menu.style.display="none";
+});
+
+/* ===== STRICT 2 BUTTON ENGINE ===== */
+
+function renderButtons(tile){
+
+    const status = tile.dataset.status;
+    const actionContainer = tile.querySelector(".program-actions");
+
+    let btn1 = {};
+    let btn2 = {};
+
+    switch(status){
+
+        case "Pending":
+            btn1 = {text:"Select", to:"Selected", type:"light"};
+            btn2 = {text:"Reject", to:"Rejected", type:"primary"};
+            break;
+
+        case "Selected":
+            btn1 = {text:"Reject", to:"Rejected", type:"primary"};
+            btn2 = {text:"Admit", to:"Admitted", type:"light"};
+            break;
+
+        case "Rejected":
+            btn1 = {text:"Select", to:"Selected", type:"light"};
+            btn2 = {text:"Admit", to:"Admitted", type:"light"};
+            break;
+
+        case "Admitted":
+            btn1 = {text:"Select", to:"Selected", type:"light"};
+            btn2 = {text:"Discontinue", to:"Discontinue", type:"primary"};
+            break;
+
+        case "Discontinued":
+            btn1 = {text:"Select", to:"Selected", type:"light"};
+            btn2 = {text:"Admit", to:"Admitted", type:"light"};
+            break;
+    }
+
+    actionContainer.innerHTML = `
+        <button class="program-btn ${btn1.type}" data-set="${btn1.to}">
+            ${btn1.text}
+        </button>
+        <button class="program-btn ${btn2.type}" data-set="${btn2.to}">
+            ${btn2.text}
+        </button>
+    `;
+}
+
+function updateStatus(tile,newStatus){
+    tile.dataset.status = newStatus;
+    tile.querySelector(".status-label").innerText = "Status: " + newStatus;
+    renderButtons(tile);
+}
+
+/* Initial Render */
+container.querySelectorAll(".applicant-tile").forEach(renderButtons);
+
+/* Per Tile Click */
+container.addEventListener("click", function(e){
+    const btn = e.target.closest("button[data-set]");
+    if(!btn) return;
+    const tile = btn.closest(".applicant-tile");
+    updateStatus(tile, btn.dataset.set);
+});
+
+/* ===== BULK ACTIONS ===== */
+
+menu?.querySelectorAll("div").forEach(item=>{
+    item.addEventListener("click", function(){
+
+        const action = item.dataset.action;
+
+        if(action==="selectAll"){
+            container.querySelectorAll(".applicant-checkbox")
+            .forEach(cb=>cb.checked=true);
+        }
+
+        if(action==="deselectAll"){
+            container.querySelectorAll(".applicant-checkbox")
+            .forEach(cb=>cb.checked=false);
+        }
+
+        if(action==="approveSelected"){
+            bulkUpdate("Selected");
+        }
+
+        if(action==="rejectSelected"){
+            bulkUpdate("Rejected");
+        }
+
+        if(action==="admitSelected"){
+            bulkUpdate("Admitted");
+        }
+
+        menu.style.display="none";
+    });
+});
+
+function bulkUpdate(status){
+    container.querySelectorAll(".applicant-tile").forEach(tile=>{
+        const cb = tile.querySelector(".applicant-checkbox");
+        if(cb.checked){
+            updateStatus(tile,status);
+        }
+    });
+}
+
+/* ===== FILTERS ===== */
+
+const sessionFilter = document.getElementById("sessionFilter");
+const programFilter = document.getElementById("programFilter");
+const statusFilter = document.getElementById("statusFilter");
+const searchInput = document.getElementById("applicantSearch");
+
+function applyFilters(){
+
+    const session = sessionFilter.value;
+    const program = programFilter.value;
+    const status = statusFilter.value;
+    const search = searchInput.value.toLowerCase();
+
+    container.querySelectorAll(".applicant-tile").forEach(tile=>{
+
+        const matchSession = session==="all" || tile.dataset.session===session;
+        const matchProgram = program==="all" || tile.dataset.program===program;
+        const matchStatus = status==="all" || tile.dataset.status===status;
+        const matchSearch = tile.innerText.toLowerCase().includes(search);
+
+        tile.style.display =
+            (matchSession && matchProgram && matchStatus && matchSearch)
+            ? "block" : "none";
+    });
+}
+
+[sessionFilter, programFilter, statusFilter]
+.forEach(el=> el?.addEventListener("change", applyFilters));
+
+searchInput?.addEventListener("keyup", applyFilters);
+
+});

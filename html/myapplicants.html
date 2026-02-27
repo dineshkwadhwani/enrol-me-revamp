@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Applicants</title>
+<link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <div class="header-left">
+        <a href="../index.html">
+            <img src="../images/icon_home.png" class="nav-icon">
+        </a>
+    </div>
+
+    <div class="profile">
+        <img src="../images/icon_person.png" id="profileIcon" class="nav-icon">
+        <div class="profile-menu" id="profileMenu">
+            <div onclick="location.href='orgdashboard.html'">Dashboard</div>
+            <div onclick="location.href='orgbankaccount.html'">Bank Account</div>
+            <div id="orgLogoutBtn">Logout</div>
+        </div>
+    </div>
+</header>
+
+<!-- ================= SUMMARY NAV ================= -->
+<div class="summary-nav">
+    <a href="orgdashboard.html">
+        <img src="../images/icon_back.png">
+    </a>
+
+    <div class="right-icons">
+        <img src="../images/icon_actions.png" id="applicantActionsToggle">
+        <div id="applicantActionsMenu">
+            <div data-action="selectAll">Select All</div>
+            <div data-action="deselectAll">Deselect All</div>
+            <div data-action="approveSelected">Approve Selected</div>
+            <div data-action="rejectSelected">Reject Selected</div>
+            <div data-action="admitSelected">Admit Selected</div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= FILTER SECTION ================= -->
+<div class="applicant-filters">
+
+    <select id="sessionFilter">
+        <option value="all">All Sessions</option>
+        <option value="2025-2026">2025-2026</option>
+        <option value="2026-2027">2026-2027</option>
+    </select>
+
+    <select id="programFilter">
+        <option value="all">All Programs</option>
+        <option value="CBSE Admission 2026">CBSE Admission 2026</option>
+        <option value="IIT Foundation Course">IIT Foundation Course</option>
+    </select>
+
+    <select id="statusFilter">
+        <option value="all">All</option>
+        <option value="Pending">Pending</option>
+        <option value="Selected">Selected</option>
+        <option value="Admitted">Admitted</option>
+        <option value="Rejected">Rejected</option>
+        <option value="Discontinued">Discontinued</option>
+    </select>
+
+    <input type="text" id="applicantSearch" placeholder="Search Applicant">
+
+</div>
+
+<!-- ================= APPLICANT GRID ================= -->
+<div class="org-page-wrapper" id="applicantContainer">
+
+    <!-- 1 Pending -->
+    <div class="org-program-tile active applicant-tile"
+         data-session="2025-2026"
+         data-program="CBSE Admission 2026"
+         data-status="Pending">
+
+        <input type="checkbox" class="applicant-checkbox">
+        <h3>CBSE Admission 2026</h3>
+        <p><strong>Name:</strong> Aarav Sharma</p>
+        <p><strong>Date:</strong> 12 Jan 2026</p>
+        <p><strong>Fees:</strong> ₹45,000</p>
+        <p class="status-label">Status: Pending</p>
+        <div class="program-actions"></div>
+    </div>
+
+    <!-- 2 Selected -->
+    <div class="org-program-tile active applicant-tile"
+         data-session="2025-2026"
+         data-program="IIT Foundation Course"
+         data-status="Selected">
+
+        <input type="checkbox" class="applicant-checkbox">
+        <h3>IIT Foundation Course</h3>
+        <p><strong>Name:</strong> Meera Patel</p>
+        <p><strong>Date:</strong> 08 Feb 2026</p>
+        <p><strong>Fees:</strong> ₹60,000</p>
+        <p class="status-label">Status: Selected</p>
+        <div class="program-actions"></div>
+    </div>
+
+    <!-- 3 Admitted -->
+    <div class="org-program-tile active applicant-tile"
+         data-session="2026-2027"
+         data-program="CBSE Admission 2026"
+         data-status="Admitted">
+
+        <input type="checkbox" class="applicant-checkbox">
+        <h3>CBSE Admission 2026</h3>
+        <p><strong>Name:</strong> Rohan Verma</p>
+        <p><strong>Date:</strong> 02 Mar 2026</p>
+        <p><strong>Fees:</strong> ₹45,000</p>
+        <p class="status-label">Status: Admitted</p>
+        <div class="program-actions"></div>
+    </div>
+
+    <!-- 4 Rejected -->
+    <div class="org-program-tile inactive applicant-tile"
+         data-session="2025-2026"
+         data-program="IIT Foundation Course"
+         data-status="Rejected">
+
+        <input type="checkbox" class="applicant-checkbox">
+        <h3>IIT Foundation Course</h3>
+        <p><strong>Name:</strong> Kavya Iyer</p>
+        <p><strong>Date:</strong> 18 Jan 2026</p>
+        <p><strong>Fees:</strong> ₹60,000</p>
+        <p class="status-label">Status: Rejected</p>
+        <div class="program-actions"></div>
+    </div>
+
+    <!-- 5 Discontinued -->
+    <div class="org-program-tile active applicant-tile"
+         data-session="2026-2027"
+         data-program="CBSE Admission 2026"
+         data-status="Discontinued">
+
+        <input type="checkbox" class="applicant-checkbox">
+        <h3>CBSE Admission 2026</h3>
+        <p><strong>Name:</strong> Siddharth Rao</p>
+        <p><strong>Date:</strong> 25 Feb 2026</p>
+        <p><strong>Fees:</strong> ₹45,000</p>
+        <p class="status-label">Status: Discontinued</p>
+        <div class="program-actions"></div>
+    </div>
+
+    <!-- 6 Pending Different Program -->
+    <div class="org-program-tile active applicant-tile"
+         data-session="2026-2027"
+         data-program="IIT Foundation Course"
+         data-status="Pending">
+
+        <input type="checkbox" class="applicant-checkbox">
+        <h3>IIT Foundation Course</h3>
+        <p><strong>Name:</strong> Ananya Deshmukh</p>
+        <p><strong>Date:</strong> 10 Mar 2026</p>
+        <p><strong>Fees:</strong> ₹60,000</p>
+        <p class="status-label">Status: Pending</p>
+        <div class="program-actions"></div>
+    </div>
+
+</div>
+
+<footer class="footer">
+© Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<script src="../script/orgscript.js"></script>
+
+</body>
+</html>
