@@ -510,3 +510,57 @@ textarea{
     border-bottom:1px solid var(--border);
     text-align:left;
 }
+
+/* ================= GALLERY ================= */
+
+.gallery-wrapper{
+    max-width:1000px;
+    margin:40px auto;
+    padding:0 30px;
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+}
+
+.gallery-tile{
+    background:#fff;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.08);
+}
+
+.gallery-image{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:14px;
+}
+
+.gallery-actions{
+    margin-top:20px;
+    display:flex;
+    gap:20px;
+}
+
+.gallery-btn{
+    padding:12px 28px;
+    border:none;
+    border-radius:30px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.2s ease;
+}
+
+.delete-btn{
+    background:var(--primary);
+    color:#fff;
+}
+
+.delete-btn:hover{
+    background:var(--primary-hover);
+}
+
+.upload-btn{
+    background:#eee;
+    color:#000;
+}

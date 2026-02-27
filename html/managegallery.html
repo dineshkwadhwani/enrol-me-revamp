@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Gallery</title>
+<link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <div class="header-left">
+        <a href="../index.html">
+            <img src="../images/icon_home.png" class="nav-icon">
+        </a>
+    </div>
+
+    <div class="profile">
+        <img src="../images/icon_person.png" id="profileIcon" class="nav-icon">
+        <div class="profile-menu" id="profileMenu">
+            <div onclick="location.href='orgdashboard.html'">Dashboard</div>
+            <div onclick="location.href='orgbankaccount.html'">Bank Account</div>
+            <div id="orgLogoutBtn">Logout</div>
+        </div>
+    </div>
+</header>
+
+<!-- ================= SUMMARY NAV ================= -->
+<div class="summary-nav">
+    <a href="orgdashboard.html">
+        <img src="../images/icon_back.png">
+    </a>
+</div>
+
+<!-- ================= GALLERY ================= -->
+<div class="gallery-wrapper">
+
+    <!-- 6 Tiles -->
+    <div class="gallery-tile" data-index="1">
+        <img src="../images/gallery1.png" class="gallery-image">
+        <div class="gallery-actions">
+            <button class="gallery-btn delete-btn">Delete</button>
+            <button class="gallery-btn upload-btn">Upload</button>
+        </div>
+        <input type="file" class="file-input" accept="image/*" hidden>
+    </div>
+
+    <div class="gallery-tile" data-index="2">
+        <img src="../images/gallery2.png" class="gallery-image">
+        <div class="gallery-actions">
+            <button class="gallery-btn delete-btn">Delete</button>
+            <button class="gallery-btn upload-btn">Upload</button>
+        </div>
+        <input type="file" class="file-input" accept="image/*" hidden>
+    </div>
+
+    <div class="gallery-tile" data-index="3">
+        <img src="../images/gallery3.png" class="gallery-image">
+        <div class="gallery-actions">
+            <button class="gallery-btn delete-btn">Delete</button>
+            <button class="gallery-btn upload-btn">Upload</button>
+        </div>
+        <input type="file" class="file-input" accept="image/*" hidden>
+    </div>
+
+    <div class="gallery-tile" data-index="4">
+        <img src="../images/gallery4.png" class="gallery-image">
+        <div class="gallery-actions">
+            <button class="gallery-btn delete-btn">Delete</button>
+            <button class="gallery-btn upload-btn">Upload</button>
+        </div>
+        <input type="file" class="file-input" accept="image/*" hidden>
+    </div>
+
+    <div class="gallery-tile" data-index="5">
+        <img src="../images/gallery5.png" class="gallery-image">
+        <div class="gallery-actions">
+            <button class="gallery-btn delete-btn">Delete</button>
+            <button class="gallery-btn upload-btn">Upload</button>
+        </div>
+        <input type="file" class="file-input" accept="image/*" hidden>
+    </div>
+
+    <div class="gallery-tile" data-index="6">
+        <img src="../images/gallery6.png" class="gallery-image">
+        <div class="gallery-actions">
+            <button class="gallery-btn delete-btn">Delete</button>
+            <button class="gallery-btn upload-btn">Upload</button>
+        </div>
+        <input type="file" class="file-input" accept="image/*" hidden>
+    </div>
+
+</div>
+
+<footer class="footer">
+© Enrol-Me 2026 | Customer Care: +91 96041 88725
+</footer>
+
+<script src="../script/orgscript.js"></script>
+
+</body>
+</html>

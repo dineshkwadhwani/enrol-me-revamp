@@ -668,3 +668,54 @@ document.getElementById("saveApplicationFormBtn")
 });
 
 });
+
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const tiles = document.querySelectorAll(".gallery-tile");
+
+tiles.forEach(tile=>{
+
+    const img = tile.querySelector(".gallery-image");
+    const deleteBtn = tile.querySelector(".delete-btn");
+    const uploadBtn = tile.querySelector(".upload-btn");
+    const fileInput = tile.querySelector(".file-input");
+    const actions = tile.querySelector(".gallery-actions");
+
+    function updateButtons(){
+        if(!img.src || img.style.display==="none"){
+            img.style.display="none";
+            actions.innerHTML = `
+                <button class="gallery-btn upload-btn">Upload Image</button>
+            `;
+            actions.querySelector(".upload-btn").addEventListener("click", ()=>{
+                fileInput.click();
+            });
+        }
+    }
+
+    deleteBtn?.addEventListener("click", function(){
+        img.src="";
+        img.style.display="none";
+        updateButtons();
+    });
+
+    uploadBtn?.addEventListener("click", function(){
+        fileInput.click();
+    });
+
+    fileInput.addEventListener("change", function(){
+        const file = this.files[0];
+        if(file){
+            const reader = new FileReader();
+            reader.onload = function(e){
+                img.src = e.target.result;
+                img.style.display="block";
+                location.reload();
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+});
+});
