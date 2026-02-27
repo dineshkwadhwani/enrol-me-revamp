@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Record Payment Details</title>
+
+    <link rel="stylesheet" href="../css/orgstyle.css">
+    <script src="../js/orgscript.js" defer></script>
+</head>
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+    <div class="header-left">
+        <img src="../images/icon_home.png"
+             class="nav-icon"
+             onclick="window.location.href='orgdashboard.html'">
+    </div>
+
+    <div class="profile">
+        <img src="../images/icon_person.png"
+             class="nav-icon"
+             id="profileIcon">
+
+        <div class="profile-menu" id="profileMenu">
+            <div onclick="logout()">Logout</div>
+        </div>
+    </div>
+</div>
+
+<!-- SUMMARY NAV -->
+
+<div class="summary-nav">
+    <img src="../images/icon_back.png" onclick="history.back()">
+    <img src="../images/icon_save.png" id="savePaymentBtn">
+</div>
+
+<!-- FORM -->
+
+<div class="form-container">
+
+    <div class="field-wrapper">
+        <div class="field-error-message" id="paymentDateError"></div>
+        <input type="date" id="paymentDate">
+    </div>
+
+    <div class="field-wrapper">
+        <div class="field-error-message" id="paymentAmountError"></div>
+        <input type="number" id="paymentAmount" placeholder="Enter Fee">
+    </div>
+
+    <div class="field-wrapper">
+        <div class="field-error-message" id="paymentRemarksError"></div>
+        <textarea id="paymentRemarks" placeholder="Enter Remarks"></textarea>
+    </div>
+
+</div>
+
+<div class="footer">
+    © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</div>
+
+</body>
+</html>

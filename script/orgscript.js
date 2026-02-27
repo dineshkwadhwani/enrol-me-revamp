@@ -886,3 +886,231 @@ function applyFilters(){
 searchInput?.addEventListener("keyup", applyFilters);
 
 });
+
+/* =========================================================
+   APPLY OFFLINE PAGE LOGIC – CLEAN VERSION
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const mobileInput = document.getElementById("offlineMobile");
+if(!mobileInput) return;
+
+const verifyBtn = document.getElementById("verifyOfflineBtn");
+const saveBtn = document.getElementById("offlineSaveBtn");
+
+/* ===== MOCK DATABASE ===== */
+
+const mockUsers = {
+    "9876543210":{
+        firstName:"Aarav",
+        lastName:"Sharma",
+        email:"aarav@email.com",
+        city:"Pune"
+    },
+    "9999999999":{
+        firstName:"Meera",
+        lastName:"Patel",
+        email:"meera@email.com",
+        city:"Mumbai"
+    }
+};
+
+/* ===== CLEAR ERRORS ===== */
+
+function clearErrors(){
+    document.querySelectorAll(".field-error-message")
+        .forEach(el => el.innerText = "");
+    document.querySelectorAll(".required-error")
+        .forEach(el => el.classList.remove("required-error"));
+}
+
+/* ===== SHOW ERROR ===== */
+
+function showError(id,msg){
+    const el = document.getElementById(id);
+    if(el) el.innerText = msg;
+}
+
+/* ===== VALIDATE FORM ===== */
+
+function validateOfflineForm(){
+
+    clearErrors();
+    let valid = true;
+
+    function validate(id,errorId,msg){
+        const field = document.getElementById(id);
+        if(!field || field.value.trim()===""){
+            field.classList.add("required-error");
+            showError(errorId,msg);
+            valid=false;
+        }
+    }
+
+    validate("offlineMobile","mobileError","Mobile required");
+    validate("offlineFirstName","firstNameError","First name required");
+    validate("offlineLastName","lastNameError","Last name required");
+    validate("offlineEmail","emailError","Email required");
+    validate("offlineCity","cityError","Select city");
+    validate("offlineProgram","programError","Select program");
+
+    return valid;
+}
+
+/* ===== VERIFY USER ===== */
+
+verifyBtn?.addEventListener("click", function(){
+
+    clearErrors();
+
+    const mobile = mobileInput.value.trim();
+
+    if(mobile.length !== 10){
+        showError("mobileError","Enter valid 10 digit mobile number");
+        mobileInput.classList.add("required-error");
+        return;
+    }
+
+    if(mockUsers[mobile]){
+        const user = mockUsers[mobile];
+        document.getElementById("offlineFirstName").value = user.firstName;
+        document.getElementById("offlineLastName").value = user.lastName;
+        document.getElementById("offlineEmail").value = user.email;
+        document.getElementById("offlineCity").value = user.city;
+        alert("User found and populated.");
+    }else{
+        alert("Provided Mobile Number is not registered with us, add details to proceed.");
+    }
+});
+
+/* ===== SAVE ===== */
+
+saveBtn?.addEventListener("click", function(){
+
+    if(!validateOfflineForm()) return;
+
+    alert("Offline application saved successfully.");
+    window.location.href = "orgdashboard.html";
+});
+
+});
+
+/* =========================================================
+   RECORD PAYMENT PAGE LOGIC
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const getBtn = document.getElementById("getParticipantsBtn");
+if(!getBtn) return;
+
+const section = document.getElementById("participantSection");
+const container = document.getElementById("participantContainer");
+const searchInput = document.getElementById("participantSearch");
+
+/* Dummy Data */
+const participants = [
+    {name:"Aarav Sharma"},
+    {name:"Meera Patel"},
+    {name:"Rohan Verma"},
+    {name:"Kavya Iyer"},
+    {name:"Siddharth Rao"},
+    {name:"Ananya Deshmukh"},
+    {name:"Vihaan Kapoor"},
+    {name:"Ishita Singh"},
+    {name:"Aditya Nair"},
+    {name:"Sneha Kulkarni"}
+];
+
+getBtn.addEventListener("click", function(){
+
+    const session = document.getElementById("paymentSession").value;
+    const program = document.getElementById("paymentProgram").value;
+
+    if(session==="" || program===""){
+        alert("Select session and program");
+        return;
+    }
+
+    section.style.display="block";
+    renderParticipants(participants);
+});
+
+function renderParticipants(data){
+
+    container.innerHTML="";
+
+    data.forEach(p=>{
+        const div = document.createElement("div");
+        div.className="participant-tile";
+        div.innerHTML=`
+            <span>${p.name}</span>
+            <button class="program-btn primary pay-btn">
+                Pay
+            </button>
+        `;
+        container.appendChild(div);
+    });
+
+    container.querySelectorAll(".pay-btn").forEach(btn=>{
+        btn.addEventListener("click", function(){
+            window.location.href="recordpaymentdetails.html";
+        });
+    });
+}
+
+/* Search */
+
+searchInput.addEventListener("keyup", function(){
+    const value = this.value.toLowerCase();
+    const filtered = participants.filter(p =>
+        p.name.toLowerCase().includes(value)
+    );
+    renderParticipants(filtered);
+});
+
+});
+
+
+/* =========================================================
+   RECORD PAYMENT DETAILS VALIDATION
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const saveBtn = document.getElementById("savePaymentBtn");
+if(!saveBtn) return;
+
+saveBtn.addEventListener("click", function(){
+
+    clearErrors();
+    let valid = true;
+
+    function validate(id,errorId,msg){
+        const field = document.getElementById(id);
+        if(!field || field.value.trim()===""){
+            field.classList.add("required-error");
+            document.getElementById(errorId).innerText=msg;
+            valid=false;
+        }
+    }
+
+    function clearErrors(){
+        document.querySelectorAll(".field-error-message")
+            .forEach(e=>e.innerText="");
+        document.querySelectorAll(".required-error")
+            .forEach(e=>e.classList.remove("required-error"));
+    }
+
+    validate("paymentDate","paymentDateError","Select Payment Date");
+    validate("paymentAmount","paymentAmountError","Enter Fee Amount");
+    validate("paymentRemarks","paymentRemarksError","Enter Remarks");
+
+    if(!valid) return;
+
+    alert("Payment recorded successfully");
+    window.location.href="recordpayment.html";
+});
+
+});

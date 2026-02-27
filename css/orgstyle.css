@@ -633,3 +633,38 @@ textarea{
 [data-status="Admitted"] .status-label{ color:#1e7e34; }
 [data-status="Rejected"] .status-label{ color:#b30000; }
 [data-status="Discontinued"] .status-label{ color:#6c757d; }
+
+/* ================= RECORD PAYMENT ================= */
+
+.payment-participant-wrapper{
+    max-width:1200px;
+    margin:30px auto;
+    padding:0 30px;
+}
+
+.payment-search{
+    margin-bottom:20px;
+}
+
+.payment-search input{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid var(--border);
+}
+
+.participant-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:20px;
+}
+
+.participant-tile{
+    background:var(--light-bg);
+    padding:20px;
+    border-radius:16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-weight:600;
+}

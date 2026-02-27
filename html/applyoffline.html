@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apply Offline</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/orgstyle.css">
+
+    <!-- JS -->
+    <script src="../script/orgscript.js" defer></script>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<div class="header">
+    <div class="header-left">
+        <img src="../images/icon_home.png"
+             class="nav-icon"
+             onclick="window.location.href='orgdashboard.html'">
+    </div>
+
+    <div class="profile">
+            <img src="../images/icon_person.png"
+                class="nav-icon"
+                id="profileIcon">
+
+        <div class="profile-menu" id="profileMenu">
+            <div onclick="logout()">Logout</div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= SUMMARY NAV ================= -->
+
+<div class="summary-nav">
+    <img src="../images/icon_back.png" onclick="history.back()">
+    <img src="../images/icon_save.png" id="offlineSaveBtn">
+</div>
+
+<!-- ================= FORM ================= -->
+
+<div class="form-container">
+
+    <!-- Mobile Verification -->
+    <div class="field-wrapper">
+        <div class="field-error-message" id="mobileError"></div>
+        <input type="text" id="offlineMobile" placeholder="Enter Mobile Number">
+    </div>
+
+    <div style="display:flex; gap:15px; margin-bottom:25px;">
+        <button class="org-primary-btn"
+                type="button"
+                id="verifyOfflineBtn">
+            Verify User
+        </button>
+
+        <button class="org-cancel-btn"
+                type="button"
+                onclick="resetOfflineForm()">
+            Reset
+        </button>
+    </div>
+
+    <!-- Applicant Details -->
+
+    <div class="field-wrapper">
+        <div class="field-error-message" id="firstNameError"></div>
+        <input type="text" id="offlineFirstName" placeholder="Enter First Name">
+    </div>
+
+    <div class="field-wrapper">
+        <div class="field-error-message" id="lastNameError"></div>
+        <input type="text" id="offlineLastName" placeholder="Enter Last Name">
+    </div>
+
+    <div class="field-wrapper">
+        <div class="field-error-message" id="emailError"></div>
+        <input type="email" id="offlineEmail" placeholder="Enter Email">
+    </div>
+
+    <div class="field-wrapper">
+        <div class="field-error-message" id="cityError"></div>
+        <select id="offlineCity">
+            <option value="">Select City</option>
+            <option>Pune</option>
+            <option>Mumbai</option>
+            <option>Delhi</option>
+        </select>
+    </div>
+
+    <div class="field-wrapper">
+        <div class="field-error-message" id="programError"></div>
+        <select id="offlineProgram">
+            <option value="">Select Program</option>
+            <option>CBSE Admission 2026</option>
+            <option>IIT Foundation Course</option>
+        </select>
+    </div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<div class="footer">
+    © Enrol-Me 2026 | Customer Care: +91 96041 88725
+</div>
+
+</body>
+</html>
