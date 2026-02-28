@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Broadcast Messages</title>
+    <link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-left">
+        <img src="../images/icon_home.png" class="nav-icon" onclick="location.href='orgdashboard.html'">
+    </div>
+    <div class="profile">
+        <img src="../images/icon_person.png" class="nav-icon" id="profileIcon">
+        <div class="profile-menu" id="profileMenu">
+            <div id="orgLogoutBtn">Logout</div>
+        </div>
+    </div>
+</div>
+
+<!-- SUMMARY NAV -->
+<div class="summary-nav">
+    <img src="../images/icon_back.png" onclick="history.back()">
+
+    <div style="position:relative;">
+        <img src="../images/icon_actions.png" id="broadcastActionsToggle">
+
+        <div id="broadcastActionsMenu">
+            <div data-action="new">New Message</div>
+            <div data-action="sort">Sort by Date</div>
+        </div>
+    </div>
+</div>
+
+<!-- SEARCH -->
+<div class="broadcast-wrapper">
+    <input type="text" id="broadcastSearch" placeholder="Search message...">
+</div>
+
+<!-- TILES -->
+<div class="broadcast-wrapper">
+    <div id="broadcastContainer" class="broadcast-grid">
+
+        <div class="broadcast-tile">
+            <div>12 Mar 2026</div>
+            <div><strong>Program:</strong> CBSE Admission 2026</div>
+            <div>Admissions closing soon. Apply now!</div>
+        </div>
+
+        <div class="broadcast-tile">
+            <div>05 Mar 2026</div>
+            <div><strong>Program:</strong> IIT Foundation</div>
+            <div>New batch starting next week.</div>
+        </div>
+
+        <div class="broadcast-tile">
+            <div>01 Mar 2026</div>
+            <div><strong>Program:</strong> CBSE Admission 2026</div>
+            <div>Fee payment reminder.</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="footer">
+    © Enrol-Me 2026
+</div>
+
+<script src="../script/orgscript.js"></script>
+</body>
+</html>

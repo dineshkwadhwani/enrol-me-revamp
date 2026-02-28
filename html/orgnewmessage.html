@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Broadcast Message</title>
+    <link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-left">
+        <img src="../images/icon_home.png" class="nav-icon" onclick="location.href='orgdashboard.html'">
+    </div>
+    <div class="profile">
+        <img src="../images/icon_person.png" class="nav-icon" id="profileIcon">
+        <div class="profile-menu" id="profileMenu">
+            <div id="orgLogoutBtn">Logout</div>
+        </div>
+    </div>
+</div>
+
+<!-- SUMMARY NAV -->
+<div class="summary-nav">
+    <img src="../images/icon_back.png" onclick="history.back()">
+    <img src="../images/icon_send.png" id="sendMessageBtn">
+</div>
+
+<!-- FORM -->
+<div class="form-container">
+    <h2 class="page-title">Broadcast Message</h2>
+
+    <div class="field-wrapper">
+        <select id="messageType">
+            <option value="">Select Message Type</option>
+            <option>SMS</option>
+            <option>Whatsapp</option>
+            <option>Email</option>
+            <option>Whatsapp and SMS</option>
+            <option>All</option>
+        </select>
+    </div>
+
+    <div class="field-wrapper">
+        <select id="messageSession">
+            <option value="">Select Session</option>
+            <option>2025-2026</option>
+            <option>2026-2027</option>
+        </select>
+    </div>
+
+    <div class="field-wrapper">
+        <select id="messageProgram">
+            <option value="">Select Program</option>
+            <option>CBSE Admission 2026</option>
+            <option>IIT Foundation Course</option>
+        </select>
+    </div>
+
+    <div class="field-wrapper">
+        <select id="predefinedMessage">
+            <option value="">Select Predefined Message</option>
+            <option value="reminder">Fee Reminder</option>
+            <option value="admission">Admission Open</option>
+            <option value="custom">Custom Message</option>
+        </select>
+    </div>
+
+    <div class="field-wrapper">
+        <textarea id="messageContent" maxlength="165" disabled></textarea>
+        <div id="messageCharCount">0 / 165</div>
+    </div>
+
+</div>
+
+<div class="footer">
+    © Enrol-Me 2026
+</div>
+
+<script src="../script/orgscript.js"></script>
+</body>
+</html>

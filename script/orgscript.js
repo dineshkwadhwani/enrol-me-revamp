@@ -1114,3 +1114,139 @@ saveBtn.addEventListener("click", function(){
 });
 
 });
+
+/* =========================================================
+   BROADCAST MESSAGE LOGIC
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const toggle = document.getElementById("broadcastActionsToggle");
+    const menu = document.getElementById("broadcastActionsMenu");
+    const container = document.getElementById("broadcastContainer");
+    const searchInput = document.getElementById("broadcastSearch");
+
+    /* ===== ACTION MENU ===== */
+
+    if(toggle && menu){
+
+        toggle.addEventListener("click", function(e){
+            e.stopPropagation();
+            menu.style.display =
+                menu.style.display === "block" ? "none" : "block";
+        });
+
+        document.addEventListener("click", function(){
+            menu.style.display = "none";
+        });
+
+        menu.querySelectorAll("div").forEach(item=>{
+            item.addEventListener("click", function(){
+
+                if(item.dataset.action === "new"){
+                    window.location.href = "orgnewmessage.html";
+                }
+
+                if(item.dataset.action === "sort"){
+                    const tiles = Array.from(container.children);
+                    tiles.reverse();
+                    container.innerHTML = "";
+                    tiles.forEach(t=>container.appendChild(t));
+                }
+
+                menu.style.display = "none";
+            });
+        });
+    }
+
+    /* ===== SEARCH ===== */
+
+    if(searchInput && container){
+
+        searchInput.addEventListener("keyup", function(){
+
+            const value = this.value.toLowerCase();
+
+            container.querySelectorAll(".broadcast-tile")
+            .forEach(tile=>{
+
+                tile.style.display =
+                    tile.innerText.toLowerCase().includes(value)
+                    ? "block"
+                    : "none";
+            });
+        });
+    }
+
+});
+
+/* =========================================================
+   ORG NEW MESSAGE PAGE LOGIC
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const predefined = document.getElementById("predefinedMessage");
+    const textarea = document.getElementById("messageContent");
+    const counter = document.getElementById("messageCharCount");
+    const sendBtn = document.getElementById("sendMessageBtn");
+
+    if(!predefined) return;
+
+    /* ===== PREDEFINED MESSAGE HANDLING ===== */
+
+    const predefinedMessages = {
+        reminder: "Reminder: Please complete your fee payment.",
+        admission: "Admissions are now open. Apply today!"
+    };
+
+    predefined.addEventListener("change", function(){
+
+        const value = this.value;
+
+        if(value === "custom"){
+            textarea.value = "";
+            textarea.disabled = false;
+        }
+        else if(predefinedMessages[value]){
+            textarea.value = predefinedMessages[value];
+            textarea.disabled = true;
+        }
+        else{
+            textarea.value = "";
+            textarea.disabled = true;
+        }
+
+        counter.innerText = textarea.value.length + " / 165";
+    });
+
+    textarea.addEventListener("input", function(){
+        counter.innerText = this.value.length + " / 165";
+    });
+
+    /* ===== SEND VALIDATION ===== */
+
+    sendBtn?.addEventListener("click", function(){
+
+        const type = document.getElementById("messageType").value;
+        const session = document.getElementById("messageSession").value;
+        const program = document.getElementById("messageProgram").value;
+        const message = textarea.value.trim();
+
+        let error = "";
+
+        if(type === "") error = "Select Message Type";
+        else if(session === "") error = "Select Session";
+        else if(program === "") error = "Select Program";
+        else if(message === "") error = "Message cannot be empty";
+
+        if(error !== ""){
+            alert(error);
+            return;
+        }
+
+        alert("Message Broadcasted Successfully");
+        window.location.href = "orgbroadcastmessages.html";
+    });
+
+});
