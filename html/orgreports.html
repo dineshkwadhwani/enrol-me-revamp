@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reports</title>
+<link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+<div class="header-left">
+<img src="../images/icon_home.png" class="nav-icon" onclick="location.href='orgdashboard.html'">
+</div>
+
+<div class="profile">
+<img src="../images/icon_person.png" class="nav-icon" id="profileIcon">
+<div class="profile-menu" id="profileMenu">
+<div id="orgLogoutBtn">Logout</div>
+</div>
+</div>
+</div>
+
+<!-- SUMMARY NAV -->
+<div class="summary-nav">
+<img src="../images/icon_back.png" onclick="history.back()">
+<div></div>
+</div>
+
+<div class="reports-wrapper">
+
+<div class="report-tile" onclick="location.href='orgdatewisepaymentreport.html'">
+Date Wise Payment Report
+</div>
+
+<div class="report-tile" onclick="location.href='orgmatrixpaymentreport.html'">
+Matrix Payment Report
+</div>
+
+<div class="report-tile" onclick="location.href='orgattendancereport.html'">
+Attendance Report
+</div>
+
+<div class="report-tile" onclick="location.href='orgdetailedattendancereport.html'">
+Detailed Attendance Report
+</div>
+
+</div>
+
+<div class="footer">
+© Enrol-Me 2026
+</div>
+
+<script src="../script/orgscript.js"></script>
+</body>
+</html>

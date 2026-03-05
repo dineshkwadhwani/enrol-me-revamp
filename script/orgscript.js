@@ -1373,3 +1373,351 @@ menu.querySelectorAll("div").forEach(item=>{
 });
 
 });
+
+
+/* ================= DATEWISE PAYMENT REPORT ================= */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const runBtn=document.getElementById("runReportBtn");
+const reportSection=document.getElementById("reportSection");
+
+if(!runBtn) return;
+
+runBtn.addEventListener("click",function(){
+
+const from=document.getElementById("fromDate");
+const to=document.getElementById("toDate");
+
+let valid=true;
+
+function setError(el,id,msg){
+document.getElementById(id).innerText=msg;
+el.classList.add("required-error");
+valid=false;
+}
+
+function clear(){
+document.querySelectorAll(".field-error-message")
+.forEach(e=>e.innerText="");
+document.querySelectorAll(".required-error")
+.forEach(e=>e.classList.remove("required-error"));
+}
+
+clear();
+
+if(from.value==="") setError(from,"fromDateError","From Date required");
+if(to.value==="") setError(to,"toDateError","To Date required");
+
+if(!valid) return;
+
+reportSection.style.display="block";
+
+});
+
+});
+
+
+/* =========================================================
+   MATRIX PAYMENT REPORT
+========================================================= */
+
+/* HEADER CHECKBOX SELECT ALL */
+
+document.addEventListener("change",function(e){
+
+if(e.target.id==="matrixSelectAll"){
+
+const checked=e.target.checked;
+
+document.querySelectorAll(".matrixRowCheck")
+.forEach(cb=>cb.checked=checked);
+
+}
+
+});
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const runBtn=document.getElementById("runMatrixReportBtn");
+if(!runBtn) return;
+
+const reportSection=document.getElementById("matrixReportSection");
+const tableBody=document.getElementById("matrixTableBody");
+const headerRow=document.getElementById("matrixHeaderRow");
+
+
+/* Dummy Applicants */
+
+const applicants=[
+{
+name:"Aarav Sharma",
+programFee:20000,
+payments:{
+"2025-09":2000,
+"2025-10":2000,
+"2025-11":3000,
+"2025-12":2000
+}
+},
+{
+name:"Meera Patel",
+programFee:20000,
+payments:{
+"2025-09":1000,
+"2025-10":2000,
+"2025-11":2000,
+"2025-12":3000
+}
+}
+];
+
+
+
+runBtn.addEventListener("click",function(){
+
+clearErrors();
+
+const from=document.getElementById("matrixFromDate").value;
+const to=document.getElementById("matrixToDate").value;
+const program=document.getElementById("matrixProgram").value;
+
+let valid=true;
+const fromField=document.getElementById("matrixFromDate");
+const toField=document.getElementById("matrixToDate");
+const programField=document.getElementById("matrixProgram");
+
+if(!from){
+showError("matrixFromError","From Date required");
+fromField.classList.add("required-error");
+valid=false;
+}
+
+if(!to){
+showError("matrixToError","To Date required");
+toField.classList.add("required-error");
+valid=false;
+}
+
+if(!program){
+showError("matrixProgramError","Select Program");
+programField.classList.add("required-error");
+valid=false;
+}
+
+if(!valid) return;
+
+
+/* Check 12 month rule */
+
+const months=monthDiff(from,to);
+
+if(months>12){
+
+alert("Date range cannot exceed 12 months");
+return;
+
+}
+
+
+generateReport(from,to);
+
+reportSection.style.display="block";
+
+});
+
+
+
+function generateReport(from,to){
+
+const months=getMonths(from,to);
+
+renderHeader(months);
+renderRows(months);
+
+}
+
+
+
+/* Create Month Headers */
+
+function renderHeader(months){
+
+headerRow.innerHTML="";
+
+headerRow.innerHTML+=`
+<th><input type="checkbox" id="matrixSelectAll"></th>
+<th>Applicant Name</th>
+`;
+
+months.forEach(m=>{
+headerRow.innerHTML+=`<th>${m}</th>`;
+});
+
+headerRow.innerHTML+=`
+<th>Sub Total</th>
+<th>Total Program Fee</th>
+<th>Total Program Fee Paid</th>
+<th>Total Program Fee Outstanding</th>
+`;
+
+}
+
+
+
+/* Render Rows */
+
+function renderRows(months){
+
+tableBody.innerHTML="";
+
+applicants.forEach(app=>{
+
+let subtotal=0;
+
+let row=`
+<tr>
+
+<td>
+<input type="checkbox" class="matrixRowCheck">
+</td>
+
+<td>${app.name}</td>
+`;
+
+months.forEach(m=>{
+
+let val=app.payments[m] || 0;
+subtotal+=val;
+
+let className="payment-missing";
+
+if(val>0 && val<3000) className="payment-partial";
+if(val>=3000) className="payment-paid";
+
+row+=`<td class="${className}">${val}</td>`;
+
+});
+
+
+let paid=subtotal;
+let outstanding=app.programFee-paid;
+
+row+=`
+<td>${subtotal}</td>
+<td>${app.programFee}</td>
+<td>${paid}</td>
+<td>${outstanding}</td>
+</tr>
+`;
+
+tableBody.innerHTML+=row;
+
+});
+
+}
+
+
+
+/* Helpers */
+
+function getMonths(start,end){
+
+let startDate=new Date(start);
+let endDate=new Date(end);
+
+let months=[];
+
+while(startDate<=endDate){
+
+let y=startDate.getFullYear();
+let m=startDate.getMonth()+1;
+
+months.push(`${y}-${String(m).padStart(2,"0")}`);
+
+startDate.setMonth(startDate.getMonth()+1);
+
+}
+
+return months;
+
+}
+
+function monthDiff(d1,d2){
+
+let start=new Date(d1);
+let end=new Date(d2);
+
+return (end.getFullYear()-start.getFullYear())*12+
+(end.getMonth()-start.getMonth());
+
+}
+
+
+function showError(id,msg){
+
+document.getElementById(id).innerText=msg;
+
+}
+
+function clearErrors(){
+
+document.querySelectorAll(".field-error-message")
+.forEach(e=>e.innerText="");
+
+}
+
+
+
+/* ACTION MENU */
+
+const toggle=document.getElementById("matrixActionToggle");
+const menu=document.getElementById("matrixActionMenu");
+
+toggle?.addEventListener("click",function(e){
+
+e.stopPropagation();
+menu.style.display=menu.style.display==="block"?"none":"block";
+
+});
+
+document.addEventListener("click",function(){
+
+menu.style.display="none";
+
+});
+
+
+menu?.querySelectorAll("div").forEach(item=>{
+
+item.addEventListener("click",function(){
+
+const action=item.dataset.action;
+
+const checks=document.querySelectorAll(".matrixRowCheck");
+
+if(action==="selectAll"){
+
+checks.forEach(c=>c.checked=true);
+
+}
+
+if(action==="deselectAll"){
+
+checks.forEach(c=>c.checked=false);
+
+}
+
+if(action==="sendReminder"){
+
+alert("Payment reminder sent");
+
+}
+
+menu.style.display="none";
+
+});
+
+});
+
+});

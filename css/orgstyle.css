@@ -772,3 +772,168 @@ textarea{
     color:#b30000;
     margin-bottom:15px;
 }
+
+
+/* ================= REPORTS ================= */
+
+.reports-wrapper{
+max-width:1000px;
+margin:40px auto;
+padding:0 30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+
+.report-tile{
+background:var(--light-bg);
+padding:25px;
+border-radius:16px;
+font-weight:600;
+cursor:pointer;
+text-align:center;
+transition:0.2s ease;
+}
+
+.report-tile:hover{
+transform:translateY(-3px);
+}
+
+.report-section{
+max-width:1200px;
+margin:40px auto;
+padding:0 30px;
+}
+
+.report-summary{
+width:400px;
+border-collapse:collapse;
+margin-bottom:40px;
+}
+
+.report-summary td{
+padding:10px;
+border-bottom:1px solid var(--border);
+}
+
+.report-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.report-table th,
+.report-table td{
+padding:12px;
+border-bottom:1px solid var(--border);
+text-align:left;
+}
+
+.report-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+/* MATRIX TABLE */
+
+.matrix-table-wrapper{
+overflow-x:auto;
+}
+
+#matrixActionMenu{
+position:absolute;
+right:0;
+top:40px;
+background:#fff;
+border:1px solid var(--border);
+border-radius:8px;
+display:none;
+min-width:220px;
+z-index:2000;
+}
+
+#matrixActionMenu div{
+padding:10px 15px;
+cursor:pointer;
+}
+
+#matrixActionMenu div:hover{
+background:var(--light-bg);
+}
+
+/* =======================================================
+MATRIX PAYMENT REPORT IMPROVEMENTS
+======================================================= */
+
+.matrix-table-wrapper{
+
+overflow-x:auto;
+max-height:500px;
+
+border:1px solid #eee;
+border-radius:8px;
+
+}
+
+
+/* STICKY HEADER */
+
+.matrix-table thead th{
+
+position:sticky;
+top:0;
+
+background:#fff;
+
+z-index:2;
+
+border-bottom:2px solid #ddd;
+
+}
+
+
+/* STICKY FIRST COLUMN */
+
+.matrix-table .sticky-col{
+
+position:sticky;
+left:0;
+
+background:#fff;
+
+z-index:3;
+
+}
+
+
+/* APPLICANT NAME COLUMN */
+
+.matrix-table .name-col{
+
+left:40px;
+z-index:3;
+
+font-weight:600;
+
+}
+
+
+/* PAYMENT CELL COLORS */
+
+.payment-paid{
+
+background:#d4edda;
+
+}
+
+.payment-partial{
+
+background:#fff3cd;
+
+}
+
+.payment-missing{
+
+background:#f8d7da;
+
+}
