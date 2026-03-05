@@ -937,3 +937,9 @@ background:#fff3cd;
 background:#f8d7da;
 
 }
+
+.attendance-table td,
+.attendance-table th{
+padding:10px;
+text-align:left;
+}

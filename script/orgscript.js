@@ -1721,3 +1721,277 @@ menu.style.display="none";
 });
 
 });
+
+/* =========================================================
+   TAKE ATTENDANCE
+========================================================= */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const fetchBtn=document.getElementById("fetchStudentsBtn");
+if(!fetchBtn) return;
+
+const tableBody=document.getElementById("attendanceTableBody");
+const section=document.getElementById("attendanceSection");
+
+const program=document.getElementById("attendanceProgram");
+const date=document.getElementById("attendanceDate");
+
+const selectAll=document.getElementById("attendanceSelectAll");
+const saveBtn=document.getElementById("saveAttendanceBtn");
+
+
+/* Dummy Students */
+
+const students=[
+"Aarav Sharma",
+"Aditya Nair",
+"Ananya Deshmukh",
+"Ishita Singh",
+"Kavya Iyer",
+"Meera Patel",
+"Rohan Verma",
+"Siddharth Rao",
+"Sneha Kulkarni",
+"Vihaan Kapoor"
+];
+
+
+/* FETCH STUDENTS */
+
+fetchBtn.addEventListener("click",function(){
+
+clearErrors();
+
+let valid=true;
+
+if(program.value===""){
+showError("attendanceProgramError","Select Program");
+program.classList.add("required-error");
+valid=false;
+}
+
+if(date.value===""){
+showError("attendanceDateError","Select Date");
+date.classList.add("required-error");
+valid=false;
+}
+
+if(!valid) return;
+
+
+/* Sort Alphabetically */
+
+const sorted=[...students].sort();
+
+renderStudents(sorted);
+
+section.style.display="block";
+
+});
+
+
+
+function renderStudents(list){
+
+tableBody.innerHTML="";
+
+list.forEach(name=>{
+
+const row=document.createElement("tr");
+
+row.innerHTML=`
+<td></td>
+<td>${name}</td>
+<td>
+<input type="checkbox" class="attendanceCheck">
+</td>
+`;
+
+tableBody.appendChild(row);
+
+});
+
+}
+
+
+
+/* HEADER CHECKBOX */
+
+selectAll?.addEventListener("change",function(){
+
+document.querySelectorAll(".attendanceCheck")
+.forEach(cb=>cb.checked=this.checked);
+
+});
+
+
+
+/* SAVE ATTENDANCE */
+
+saveBtn?.addEventListener("click",function(){
+
+const checks=document.querySelectorAll(".attendanceCheck");
+
+if(checks.length===0){
+alert("Fetch students first");
+return;
+}
+
+alert("Attendance saved successfully");
+
+});
+
+
+
+/* HELPERS */
+
+function showError(id,msg){
+document.getElementById(id).innerText=msg;
+}
+
+function clearErrors(){
+
+document.querySelectorAll(".field-error-message")
+.forEach(e=>e.innerText="");
+
+document.querySelectorAll(".required-error")
+.forEach(e=>e.classList.remove("required-error"));
+
+}
+
+});
+
+
+/* =========================================================
+   TAKE ATTENDANCE
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const fetchBtn = document.getElementById("fetchStudentsBtn");
+if(!fetchBtn) return;
+
+const program = document.getElementById("attendanceProgram");
+const date = document.getElementById("attendanceDate");
+
+const tableBody = document.getElementById("attendanceTableBody");
+const section = document.getElementById("attendanceSection");
+
+const selectAll = document.getElementById("attendanceSelectAll");
+const saveBtn = document.getElementById("saveAttendanceBtn");
+
+/* Dummy Students */
+
+const students = [
+"Aarav Sharma",
+"Aditya Nair",
+"Ananya Deshmukh",
+"Ishita Singh",
+"Kavya Iyer",
+"Meera Patel",
+"Rohan Verma",
+"Siddharth Rao",
+"Sneha Kulkarni",
+"Vihaan Kapoor"
+];
+
+
+/* FETCH STUDENTS */
+
+fetchBtn.addEventListener("click", function(){
+
+clearErrors();
+
+let valid = true;
+
+if(program.value === ""){
+showError("attendanceProgramError","Select Program");
+program.classList.add("required-error");
+valid = false;
+}
+
+if(date.value === ""){
+showError("attendanceDateError","Select Date");
+date.classList.add("required-error");
+valid = false;
+}
+
+if(!valid) return;
+
+/* Sort alphabetically */
+
+const sorted = [...students].sort();
+
+renderStudents(sorted);
+
+section.style.display = "block";
+
+});
+
+
+function renderStudents(list){
+
+tableBody.innerHTML = "";
+
+list.forEach(name => {
+
+const row = document.createElement("tr");
+
+row.innerHTML = `
+<td>${name}</td>
+<td style="text-align:center">
+<input type="checkbox" class="attendanceCheck">
+</td>
+`;
+
+tableBody.appendChild(row);
+
+});
+
+}
+
+
+/* SELECT ALL PRESENT */
+
+selectAll?.addEventListener("change", function(){
+
+document.querySelectorAll(".attendanceCheck")
+.forEach(cb => cb.checked = this.checked);
+
+});
+
+
+/* SAVE ATTENDANCE */
+
+saveBtn?.addEventListener("click", function(){
+
+const rows = document.querySelectorAll(".attendanceCheck");
+
+if(rows.length === 0){
+alert("Fetch students first");
+return;
+}
+
+alert("Attendance saved successfully");
+
+});
+
+
+/* HELPERS */
+
+function showError(id,msg){
+document.getElementById(id).innerText = msg;
+}
+
+function clearErrors(){
+
+document.querySelectorAll(".field-error-message")
+.forEach(e => e.innerText = "");
+
+document.querySelectorAll(".required-error")
+.forEach(e => e.classList.remove("required-error"));
+
+}
+
+});

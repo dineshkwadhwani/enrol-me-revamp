@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Take Attendance</title>
+
+<link rel="stylesheet" href="../css/orgstyle.css">
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="header-left">
+<img src="../images/icon_home.png"
+class="nav-icon"
+onclick="location.href='orgdashboard.html'">
+</div>
+
+<div class="profile">
+
+<img src="../images/icon_person.png"
+class="nav-icon"
+id="profileIcon">
+
+<div class="profile-menu" id="profileMenu">
+<div id="orgLogoutBtn">Logout</div>
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- SUMMARY NAV -->
+
+<div class="summary-nav">
+
+<img src="../images/icon_back.png"
+onclick="history.back()">
+
+<img src="../images/icon_save.png"
+id="saveAttendanceBtn"
+class="nav-icon">
+
+</div>
+
+
+
+<!-- FORM -->
+
+<div class="form-container">
+
+<h2>Take Attendance</h2>
+
+
+<div class="field-wrapper">
+
+<label>Program</label>
+
+<select id="attendanceProgram">
+
+<option value="">Select Program</option>
+<option>IIT Foundation</option>
+<option>CBSE Admission 2026</option>
+<option>Maths Olympiad</option>
+
+</select>
+
+<div class="field-error-message"
+id="attendanceProgramError"></div>
+
+</div>
+
+
+<div class="field-wrapper">
+
+<label>Date</label>
+
+<input type="date"
+id="attendanceDate">
+
+<div class="field-error-message"
+id="attendanceDateError"></div>
+
+</div>
+
+
+<button class="program-btn primary"
+id="fetchStudentsBtn">
+
+Fetch Students
+
+</button>
+
+</div>
+
+
+
+<!-- STUDENT LIST -->
+
+<div id="attendanceSection"
+class="report-section"
+style="display:none">
+
+
+<table class="report-table">
+
+<thead>
+
+<tr>
+
+
+
+<th>Participant Name</th>
+
+<th style="text-align:center">
+    Present
+
+ <input type="checkbox" id="attendanceSelectAll">   
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="attendanceTableBody">
+
+</tbody>
+
+</table>
+
+</div>
+
+
+
+<div class="footer">
+© Enrol-Me 2026
+</div>
+
+
+<script src="../script/orgscript.js"></script>
+
+</body>
+</html>
