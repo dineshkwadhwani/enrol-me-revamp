@@ -1250,3 +1250,126 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
 });
+
+/* =========================================================
+   ORG INVOICES PAGE LOGIC
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const container = document.getElementById("invoiceContainer");
+if(!container) return;
+
+const filter = document.getElementById("invoiceStatusFilter");
+const toggle = document.getElementById("invoiceActionsToggle");
+const menu = document.getElementById("invoiceActionsMenu");
+
+let sortState = {
+    dateAsc: true,
+    statusAsc: true
+};
+
+/* ===== DUMMY DATA ===== */
+
+let invoices = [
+    {no:"INV001", date:"2026-03-01", org:"Main Branch", amount:12000, due:"2026-03-15", status:"Pending"},
+    {no:"INV002", date:"2026-02-15", org:"City Branch", amount:8500, due:"2026-02-28", status:"Paid"},
+    {no:"INV003", date:"2026-01-10", org:"Main Branch", amount:15000, due:"2026-01-20", status:"Pending"},
+    {no:"INV004", date:"2026-03-12", org:"East Branch", amount:9500, due:"2026-03-25", status:"Paid"}
+];
+
+/* ===== RENDER ===== */
+
+function renderInvoices(data){
+
+    container.innerHTML="";
+
+    data.forEach(inv=>{
+
+        const tile = document.createElement("div");
+        tile.className="invoice-tile";
+        tile.dataset.status = inv.status;
+        tile.dataset.date = inv.date;
+
+        tile.innerHTML=`
+            <div><strong>Invoice No:</strong> ${inv.no}</div>
+            <div><strong>Invoice Date:</strong> ${inv.date}</div>
+            <div><strong>Organization:</strong> ${inv.org}</div>
+            <div><strong>Amount:</strong> ₹${inv.amount}</div>
+            <div><strong>Due Date:</strong> ${inv.due}</div>
+            <div class="invoice-status ${inv.status.toLowerCase()}">
+                ${inv.status}
+            </div>
+            ${inv.status==="Pending" ?
+                `<button class="program-btn primary pay-now">Pay Now</button>`
+                : ""
+            }
+        `;
+
+        container.appendChild(tile);
+    });
+
+    document.querySelectorAll(".pay-now").forEach(btn=>{
+        btn.addEventListener("click", function(){
+            window.location.href="payumoney.html";
+        });
+    });
+}
+
+renderInvoices(invoices);
+
+/* ===== FILTER ===== */
+
+filter.addEventListener("change", function(){
+
+    const value = this.value;
+
+    if(value==="All"){
+        renderInvoices(invoices);
+    }
+    else{
+        const filtered = invoices.filter(i=>i.status===value);
+        renderInvoices(filtered);
+    }
+});
+
+/* ===== ACTION MENU ===== */
+
+toggle.addEventListener("click", function(e){
+    e.stopPropagation();
+    menu.style.display = menu.style.display==="block" ? "none":"block";
+});
+
+document.addEventListener("click", function(){
+    menu.style.display="none";
+});
+
+menu.querySelectorAll("div").forEach(item=>{
+    item.addEventListener("click", function(){
+
+        const type = item.dataset.sort;
+
+        if(type==="date"){
+            invoices.sort((a,b)=>
+                sortState.dateAsc
+                    ? new Date(a.date) - new Date(b.date)
+                    : new Date(b.date) - new Date(a.date)
+            );
+            sortState.dateAsc = !sortState.dateAsc;
+        }
+
+        if(type==="status"){
+            invoices.sort((a,b)=>
+                sortState.statusAsc
+                    ? a.status.localeCompare(b.status)
+                    : b.status.localeCompare(a.status)
+            );
+            sortState.statusAsc = !sortState.statusAsc;
+        }
+
+        renderInvoices(invoices);
+        menu.style.display="none";
+    });
+});
+
+});

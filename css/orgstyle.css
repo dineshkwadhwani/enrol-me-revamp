@@ -727,3 +727,48 @@ textarea{
 #broadcastActionsMenu div:hover{
     background:var(--light-bg);
 }
+
+/* ================= INVOICES ================= */
+
+.invoice-wrapper{
+    max-width:1200px;
+    margin:30px auto;
+    padding:0 30px;
+}
+
+.invoice-filter{
+    margin-bottom:25px;
+}
+
+.invoice-filter select{
+    padding:12px;
+    border-radius:10px;
+    border:1px solid var(--border);
+}
+
+.invoice-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+    gap:20px;
+}
+
+.invoice-tile{
+    background:#fff;
+    padding:25px;
+    border-radius:16px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.06);
+}
+
+.invoice-status{
+    margin-top:10px;
+    font-weight:600;
+}
+
+.invoice-status.paid{
+    color:#1e7e34;
+}
+
+.invoice-status.pending{
+    color:#b30000;
+    margin-bottom:15px;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoices</title>
+    <link rel="stylesheet" href="../css/orgstyle.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-left">
+        <img src="../images/icon_home.png"
+             class="nav-icon"
+             onclick="location.href='orgdashboard.html'">
+    </div>
+
+    <div class="profile">
+        <img src="../images/icon_profile.png"
+             class="nav-icon"
+             id="profileIcon">
+        <div class="profile-menu" id="profileMenu">
+            <div id="orgLogoutBtn">Logout</div>
+        </div>
+    </div>
+</div>
+
+<!-- SUMMARY NAV -->
+<div class="summary-nav">
+    <img src="../images/icon_back.png" onclick="history.back()">
+
+    <div style="position:relative;">
+        <img src="../images/icon_actions.png" id="invoiceActionsToggle">
+
+        <div id="invoiceActionsMenu">
+            <div data-sort="date">Sort by Date</div>
+            <div data-sort="status">Sort by Status</div>
+        </div>
+    </div>
+</div>
+
+<!-- FILTER -->
+<div class="invoice-wrapper">
+
+    <div class="invoice-filter">
+        <select id="invoiceStatusFilter">
+            <option value="All" selected>All</option>
+            <option value="Paid">Paid</option>
+            <option value="Pending">Pending</option>
+        </select>
+    </div>
+
+    <div id="invoiceContainer" class="invoice-grid">
+        <!-- Tiles Rendered by JS -->
+    </div>
+
+</div>
+
+<div class="footer">
+    © Enrol-Me 2026
+</div>
+
+<script src="../script/orgscript.js"></script>
+</body>
+</html>
