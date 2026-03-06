@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Attendance Detail Report</title>
+
+<link rel="stylesheet" href="../css/orgstyle.css">
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="header-left">
+<img src="../images/icon_home.png"
+class="nav-icon"
+onclick="location.href='orgdashboard.html'">
+</div>
+
+<div class="profile">
+
+<img src="../images/icon_person.png"
+class="nav-icon"
+id="profileIcon">
+
+<div class="profile-menu" id="profileMenu">
+<div id="orgLogoutBtn">Logout</div>
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- SUMMARY NAV -->
+
+<div class="summary-nav">
+
+<img src="../images/icon_back.png"
+onclick="history.back()">
+
+<img src="../images/icon_run.png"
+id="runAttendanceDetailBtn"
+class="nav-icon">
+
+</div>
+
+
+
+<!-- FILTERS -->
+
+<div class="form-container">
+
+<h2>Attendance Detail Report</h2>
+
+
+<div class="field-wrapper">
+
+<label>Program</label>
+
+<select id="attendanceDetailProgram">
+
+<option value="">Select Program</option>
+<option>IIT Foundation</option>
+<option>CBSE Admission 2026</option>
+<option>Maths Olympiad</option>
+
+</select>
+
+<div class="field-error-message"
+id="attendanceDetailProgramError"></div>
+
+</div>
+
+
+<div class="field-wrapper">
+
+<label>From Date</label>
+
+<input type="date"
+id="attendanceDetailFrom">
+
+<div class="field-error-message"
+id="attendanceDetailFromError"></div>
+
+</div>
+
+
+<div class="field-wrapper">
+
+<label>To Date</label>
+
+<input type="date"
+id="attendanceDetailTo">
+
+<div class="field-error-message"
+id="attendanceDetailToError"></div>
+
+</div>
+
+</div>
+
+
+
+<!-- REPORT -->
+
+<div id="attendanceDetailReportSection"
+class="report-section"
+style="display:none">
+
+<div style="text-align:right;margin-bottom:10px">
+
+<img src="../images/icon_export.png"
+class="nav-icon"
+id="exportAttendanceDetail">
+
+</div>
+
+
+<table class="report-table">
+
+<thead>
+
+<tr id="attendanceDetailHeader">
+
+<th>Participant Name</th>
+
+</tr>
+
+</thead>
+
+<tbody id="attendanceDetailTableBody">
+
+</tbody>
+
+</table>
+
+</div>
+
+
+
+<div class="footer">
+© Enrol-Me 2026
+</div>
+
+
+<script src="../script/orgscript.js"></script>
+
+</body>
+</html>

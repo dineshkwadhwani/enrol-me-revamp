@@ -1995,3 +1995,340 @@ document.querySelectorAll(".required-error")
 }
 
 });
+
+
+/* =========================================================
+   ATTENDANCE SUMMARY REPORT
+========================================================= */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const runBtn=document.getElementById("runAttendanceSummaryBtn");
+if(!runBtn) return;
+
+const section=document.getElementById("attendanceSummaryReportSection");
+const tableBody=document.getElementById("attendanceSummaryTableBody");
+
+const program=document.getElementById("attendanceSummaryProgram");
+const from=document.getElementById("attendanceSummaryFrom");
+const to=document.getElementById("attendanceSummaryTo");
+
+const exportBtn=document.getElementById("exportAttendanceSummary");
+
+
+/* Dummy Data */
+
+const participants=[
+{name:"Aarav Sharma",present:12},
+{name:"Aditya Nair",present:10},
+{name:"Ananya Deshmukh",present:14},
+{name:"Ishita Singh",present:11},
+{name:"Kavya Iyer",present:13},
+{name:"Meera Patel",present:15},
+{name:"Rohan Verma",present:9},
+{name:"Siddharth Rao",present:8},
+{name:"Sneha Kulkarni",present:12},
+{name:"Vihaan Kapoor",present:7}
+];
+
+
+/* RUN REPORT */
+
+runBtn.addEventListener("click",function(){
+
+clearErrors();
+
+let valid=true;
+
+if(program.value===""){
+showError("attendanceSummaryProgramError","Select Program");
+program.classList.add("required-error");
+valid=false;
+}
+
+if(from.value===""){
+showError("attendanceSummaryFromError","Select From Date");
+from.classList.add("required-error");
+valid=false;
+}
+
+if(to.value===""){
+showError("attendanceSummaryToError","Select To Date");
+to.classList.add("required-error");
+valid=false;
+}
+
+if(!valid) return;
+
+renderReport();
+
+section.style.display="block";
+
+});
+
+
+/* RENDER REPORT */
+
+function renderReport(){
+
+tableBody.innerHTML="";
+
+participants.forEach(p=>{
+
+const row=document.createElement("tr");
+
+row.innerHTML=`
+<td>${p.name}</td>
+<td style="text-align:center">${p.present}</td>
+`;
+
+tableBody.appendChild(row);
+
+});
+
+}
+
+
+/* EXPORT CSV */
+
+exportBtn?.addEventListener("click",function(){
+
+let csv="Participant Name,Total Present Days\n";
+
+participants.forEach(p=>{
+csv+=`${p.name},${p.present}\n`;
+});
+
+const blob=new Blob([csv],{type:"text/csv"});
+const url=URL.createObjectURL(blob);
+
+const a=document.createElement("a");
+a.href=url;
+a.download="attendance_summary_report.csv";
+a.click();
+
+});
+
+
+/* HELPERS */
+
+function showError(id,msg){
+document.getElementById(id).innerText=msg;
+}
+
+function clearErrors(){
+
+document.querySelectorAll(".field-error-message")
+.forEach(e=>e.innerText="");
+
+document.querySelectorAll(".required-error")
+.forEach(e=>e.classList.remove("required-error"));
+
+}
+
+});
+
+/* =========================================================
+   ATTENDANCE DETAIL REPORT
+========================================================= */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const runBtn=document.getElementById("runAttendanceDetailBtn");
+if(!runBtn) return;
+
+const program=document.getElementById("attendanceDetailProgram");
+const from=document.getElementById("attendanceDetailFrom");
+const to=document.getElementById("attendanceDetailTo");
+
+const section=document.getElementById("attendanceDetailReportSection");
+const header=document.getElementById("attendanceDetailHeader");
+const tableBody=document.getElementById("attendanceDetailTableBody");
+
+const exportBtn=document.getElementById("exportAttendanceDetail");
+
+
+/* Dummy Students */
+
+const students=[
+"Aarav Sharma",
+"Aditya Nair",
+"Ananya Deshmukh",
+"Ishita Singh",
+"Kavya Iyer",
+"Meera Patel",
+"Rohan Verma",
+"Siddharth Rao",
+"Sneha Kulkarni",
+"Vihaan Kapoor"
+];
+
+
+/* RUN REPORT */
+
+runBtn.addEventListener("click",function(){
+
+clearErrors();
+
+let valid=true;
+
+if(program.value===""){
+showError("attendanceDetailProgramError","Select Program");
+program.classList.add("required-error");
+valid=false;
+}
+
+if(from.value===""){
+showError("attendanceDetailFromError","Select From Date");
+from.classList.add("required-error");
+valid=false;
+}
+
+if(to.value===""){
+showError("attendanceDetailToError","Select To Date");
+to.classList.add("required-error");
+valid=false;
+}
+
+if(!valid) return;
+
+
+/* Date Range Check */
+
+const days=dateDiff(from.value,to.value);
+
+if(days>31){
+alert("Date range cannot exceed 31 days");
+return;
+}
+
+
+const dates=getDates(from.value,to.value);
+
+renderHeader(dates);
+renderRows(dates);
+
+section.style.display="block";
+
+});
+
+
+/* HEADER */
+
+function renderHeader(dates){
+
+header.innerHTML="<th>Participant Name</th>";
+
+dates.forEach(d=>{
+header.innerHTML+=`<th>${d}</th>`;
+});
+
+}
+
+
+/* ROWS */
+
+function renderRows(dates){
+
+tableBody.innerHTML="";
+
+students.forEach(name=>{
+
+let row=`<tr><td>${name}</td>`;
+
+dates.forEach(()=>{
+const present=Math.random()>0.3 ? "P":"A";
+row+=`<td style="text-align:center">${present}</td>`;
+});
+
+row+="</tr>";
+
+tableBody.innerHTML+=row;
+
+});
+
+}
+
+
+/* EXPORT CSV */
+
+exportBtn?.addEventListener("click",function(){
+
+let csv="Participant Name\n";
+
+document.querySelectorAll("#attendanceDetailHeader th")
+.forEach((th,i)=>{
+if(i>0) csv+=","+th.innerText;
+});
+
+csv+="\n";
+
+document.querySelectorAll("#attendanceDetailTableBody tr")
+.forEach(tr=>{
+
+let row=[];
+
+tr.querySelectorAll("td").forEach(td=>{
+row.push(td.innerText);
+});
+
+csv+=row.join(",")+"\n";
+
+});
+
+const blob=new Blob([csv],{type:"text/csv"});
+const url=URL.createObjectURL(blob);
+
+const a=document.createElement("a");
+a.href=url;
+a.download="attendance_detail_report.csv";
+a.click();
+
+});
+
+
+/* HELPERS */
+
+function getDates(start,end){
+
+let s=new Date(start);
+let e=new Date(end);
+
+let arr=[];
+
+while(s<=e){
+
+arr.push(s.toISOString().split("T")[0]);
+
+s.setDate(s.getDate()+1);
+
+}
+
+return arr;
+
+}
+
+function dateDiff(d1,d2){
+
+let start=new Date(d1);
+let end=new Date(d2);
+
+return Math.ceil((end-start)/(1000*60*60*24));
+
+}
+
+function showError(id,msg){
+document.getElementById(id).innerText=msg;
+}
+
+function clearErrors(){
+
+document.querySelectorAll(".field-error-message")
+.forEach(e=>e.innerText="");
+
+document.querySelectorAll(".required-error")
+.forEach(e=>e.classList.remove("required-error"));
+
+}
+
+});
